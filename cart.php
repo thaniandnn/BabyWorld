@@ -118,46 +118,24 @@
                     <td>Subtotal</td>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="cart-body">
                 <tr>
-                    <td><a href="#"><i class='bx bxs-checkbox-minus'></i></a></td>
+                    <td><button class="remove-btn">×</button></td>
                     <td><img src="assets/img/1.jpg" alt=""></td>
                     <td>Baby Katun Shirt</td>
-                    <td>Rp600.000,00</td>
-                    <td><input type="number" value="1"></td>
-                    <td>Rp600.000,00</td>
+                    <td class="price">600000</td>
+                    <td><input type="number" class="qty" value="1" min="1"></td>
+                    <td class="subtotal">600000</td>
                 </tr>
+            </tbody>
+            <tbody id="cart-body">
                 <tr>
-                    <td><a href="#"><i class='bx bxs-checkbox-minus'></i></a></td>
-                    <td><img src="assets/img/7.jpg" alt=""></td>
-                    <td>Baby Katun Shirt</td>
-                    <td>Rp600.000,00</td>
-                    <td><input type="number" value="1"></td>
-                    <td>Rp600.000,00</td>
-                </tr>
-                <tr>
-                    <td><a href="#"><i class='bx bxs-checkbox-minus'></i></a></td>
-                    <td><img src="assets/img/8.jpg" alt=""></td>
-                    <td>Baby Katun Shirt</td>
-                    <td>Rp600.000,00</td>
-                    <td><input type="number" value="1"></td>
-                    <td>Rp600.000,00</td>
-                </tr>
-                <tr>
-                    <td><a href="#"><i class='bx bxs-checkbox-minus'></i></a></td>
-                    <td><img src="assets/img/6.jpg" alt=""></td>
-                    <td>Baby Katun Shirt</td>
-                    <td>Rp600.000,00</td>
-                    <td><input type="number" value="1"></td>
-                    <td>Rp600.000,00</td>
-                </tr>
-                <tr>
-                    <td><a href="#"><i class='bx bxs-checkbox-minus'></i></a></td>
-                    <td><img src="assets/img/9.jpg" alt=""></td>
-                    <td>Baby Katun Shirt</td>
-                    <td>Rp600.000,00</td>
-                    <td><input type="number" value="1"></td>
-                    <td>Rp600.000,00</td>
+                    <td><button class="remove-btn">×</button></td>
+                    <td><img src="assets/img/5.jpg" alt=""></td>
+                    <td>Baby Shirt</td>
+                    <td class="price">120000</td>
+                    <td><input type="number" class="qty" value="1" min="1"></td>
+                    <td class="subtotal">600000</td>
                 </tr>
             </tbody>
         </table>
@@ -177,7 +155,7 @@
             <table>
                 <tr>
                     <td>Cart Total</td>
-                    <td>Rp1.000.000,00</td>
+                    <td id="cart-total">Rp0</td>
                 </tr>
                 <tr>
                     <td>Shipping</td>
@@ -185,14 +163,37 @@
                 </tr>
                 <tr>
                     <td><strong>Total</strong></td>
-                    <td><strong>Rp1.500.000,00</strong></td>
+                    <td><strong id="total-all">Rp0</strong></td>
                 </tr>
             </table>
 
             <div class="button__co">
-                <a href="checkout.html" class="normal">Checkout</a>
-            </div>
+                <a href="checkout.php" class="normal" onclick="saveCartToLocalStorage()">Checkout</a>
+                <script>
+                    function saveCartToLocalStorage() {
+                        const cartItems = [];
+                        const rows = document.querySelectorAll("#cart-body tr");
 
+                        rows.forEach(row => {
+                            const img = row.querySelector("img").getAttribute("src");
+                            const name = row.children[2].textContent.trim();
+                            const price = parseInt(row.querySelector(".price").textContent);
+                            const qty = parseInt(row.querySelector(".qty").value);
+                            const subtotal = price * qty;
+
+                            cartItems.push({
+                                img,
+                                name,
+                                price,
+                                qty,
+                                subtotal
+                            });
+                        });
+
+                        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+                    }
+                </script>
+            </div>
         </div>
     </section>
 
@@ -215,6 +216,44 @@
         </div>
     </section>
 </body>
+
+<!--============ SCRIPT ==============-->
+<script>
+    function formatRupiah(number) {
+        return "Rp" + number.toLocaleString("id-ID");
+    }
+
+    function updateCart() {
+        const rows = document.querySelectorAll("#cart-body tr");
+        let cartTotal = 0;
+
+        rows.forEach(row => {
+            const price = parseInt(row.querySelector(".price").textContent);
+            const qty = parseInt(row.querySelector(".qty").value);
+            const subtotal = price * qty;
+            row.querySelector(".subtotal").textContent = subtotal;
+            cartTotal += subtotal;
+        });
+
+        document.getElementById("cart-total").textContent = formatRupiah(cartTotal);
+        document.getElementById("total-all").textContent = formatRupiah(cartTotal); // shipping assumed free
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll(".qty").forEach(input => {
+            input.addEventListener("input", updateCart);
+        });
+
+        document.querySelectorAll(".remove-btn").forEach(btn => {
+            btn.addEventListener("click", function() {
+                btn.closest("tr").remove();
+                updateCart();
+            });
+        });
+
+        updateCart(); // initial load
+    });
+</script>
 
 <!--============ FOOTER ==============-->
 <footer class="footer__container">
@@ -303,7 +342,5 @@
         <span class="designer">Designed by DianNadineAkhtar</span>
     </div>
 </footer>
-
-
 
 </html>

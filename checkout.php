@@ -15,6 +15,41 @@
     <script src="projectuid.js" defer></script>
 </head>
 
+<!--============ JS ==============-->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const cartData = JSON.parse(localStorage.getItem("cartItems")) || [];
+        const tableBody = document.querySelector(".order__table");
+        let subtotal = 0;
+
+        const insertRow = (item) => {
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+        <td><img src="${item.img}" class="order__img" alt=""></td>
+        <td>
+          <h3 class="table__title">${item.name}</h3>
+          <p class="table__quantity">x ${item.qty}</p>
+        </td>
+        <td><span class="table__price">Rp${item.subtotal.toLocaleString('id-ID')}</span></td>
+      `;
+            tableBody.insertBefore(row, tableBody.children[tableBody.children.length - 6]); // insert before SubTotal row
+        };
+
+        cartData.forEach(item => {
+            insertRow(item);
+            subtotal += item.subtotal;
+        });
+
+        // Update subtotal and total
+        const formattedSubtotal = "Rp" + subtotal.toLocaleString("id-ID");
+        document.querySelectorAll(".table__price")[cartData.length].textContent = formattedSubtotal;
+
+        const totalWithShipping = subtotal; // add 0 for free shipping, adjust if needed
+        document.querySelector(".order__grand-total").textContent = "Rp" + totalWithShipping.toLocaleString("id-ID");
+    });
+</script>
+
 <body>
 
     <!--============ HEADER ==============-->
@@ -132,87 +167,58 @@
             <div class="checkout__group">
                 <h3 class="section__title">Cart Totals</h3>
 
-                <table class="order__table">
+                <table class="order__table" id="checkout-table">
                     <tr>
                         <th colspan="2">Products</th>
-                        <th>Total</th>
+                        <th>Price</th>
                     </tr>
+                    <!-- Product rows will be inserted here dynamically by JS -->
+                </table>
 
-                    <tr>
-                        <td><img src="assets/img/10.jpg" class="order__img" alt=""></td>
-
-                        <td>
-                            <h3 class="table__title">Cute Summer Blue</h3>
-                            <p class="table__quantity">x 2</p>
-                        </td>
-
-                        <td><span class="table__price">Rp245.000,00</span></td>
-                    </tr>
-
-                    <tr>
-                        <td><img src="assets/img/8.jpg" class="order__img" alt=""></td>
-
-                        <td>
-                            <h3 class="table__title">Cute Summer Blue</h3>
-                            <p class="table__quantity">x 2</p>
-                        </td>
-
-                        <td><span class="table__price">Rp245.000,00</span></td>
-                    </tr>
-
-                    <tr>
-                        <td><img src="assets/img/6.jpg" class="order__img" alt=""></td>
-
-                        <td>
-                            <h3 class="table__title">Cute Summer Blue</h3>
-                            <p class="table__quantity">x 2</p>
-                        </td>
-
-                        <td><span class="table__price">Rp245.000,00</span></td>
-                    </tr>
-
+                <table class="order__table">
                     <tr>
                         <td><span class="order__subtitle">SubTotal</span></td>
-                        <td colspan="2"><span class="table__price">Rp756.000,00</span></td>
+                        <td colspan="2"><span class="table__price" id="checkout-subtotal">Rp0</span></td>
                     </tr>
-
-
                     <tr>
                         <td><span class="order__subtitle">Shipping</span></td>
                         <td colspan="2"><span class="table__price">Free Shipping</span></td>
                     </tr>
-
                     <tr>
                         <td><span class="order__subtitle">Total</span></td>
-                        <td colspan="2"><span class="order__grand-total">Rp845.000,00</span></td>
+                        <td colspan="2"><span class="order__grand-total" id="checkout-total">Rp0</span></td>
                     </tr>
-
                 </table>
+
 
                 <div class="payment__methods">
                     <h3 class="checkout__title payment__title">Payment</h3>
 
                     <div class="payment__option flex">
                         <input type="radio" name="radio" checked class="payment__input">
-                        <label for="" class="payment__label">Direct Bank Transfer</label>
+                        <label class="payment__label">Direct Bank Transfer</label>
                     </div>
 
                     <div class="payment__option flex">
-                        <input type="radio" name="radio" checked class="payment__input">
-                        <label for="" class="payment__label">Check Payment</label>
+                        <input type="radio" name="radio" class="payment__input">
+                        <label class="payment__label">Check Payment</label>
                     </div>
 
                     <div class="payment__option flex">
-                        <input type="radio" name="radio" checked class="payment__input">
-                        <label for="" class="payment__label">Paypal</label>
+                        <input type="radio" name="radio" class="payment__input">
+                        <label class="payment__label">Paypal</label>
                     </div>
                 </div>
 
-                <div class="checkout__btn">
-                    <button>Place Order</button>
-                </div>
+                <form method="post">
+                    <div class="checkout__btn">
+                        <button type="submit" name="place_order">Place Order</button>
+                    </div>
+                </form>
 
             </div>
+
+
         </div>
     </section>
 
@@ -236,8 +242,39 @@
     </section>
 </body>
 
-  <!--============ FOOTER ==============-->
-  <footer class="footer__container">
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+        const table = document.getElementById("checkout-table");
+        const subtotalSpan = document.getElementById("checkout-subtotal");
+        const totalSpan = document.getElementById("checkout-total");
+
+        let subtotal = 0;
+
+        cartItems.forEach(item => {
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+            <td><img src="${item.img}" class="order__img" alt=""></td>
+            <td>
+                <h3 class="table__title">${item.name}</h3>
+                <p class="table__quantity">x ${item.qty}</p>
+            </td>
+            <td><span class="table__price">Rp${item.price.toLocaleString('id-ID')}</span></td>
+        `;
+
+            table.appendChild(row);
+            subtotal += item.price * item.qty;
+        });
+
+        subtotalSpan.textContent = `Rp${subtotal.toLocaleString('id-ID')}`;
+        totalSpan.textContent = `Rp${subtotal.toLocaleString('id-ID')}`;
+    });
+</script>
+
+
+<!--============ FOOTER ==============-->
+<footer class="footer__container">
     <div class="footer__container grid">
         <div class="footer__content">
             <a href="index.html" class="footer__logo">
@@ -324,5 +361,10 @@
     </div>
 </footer>
 
-
 </html>
+
+<?php
+if (isset($_POST['place_order'])) {
+    echo "<script>alert('Order Placed! Thank you for your purchase.');</script>";
+}
+?>
