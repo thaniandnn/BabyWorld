@@ -23,49 +23,49 @@
             <div class="header__container container">
                 <div class="header__contact">
                     <span>0865-9712-0151</span>
-                    <span><a href="location.html">Our Location</a></span>
+                    <span><a href="location.php">Our Location</a></span>
                 </div>
 
                 <p class="header__alert-news">
-                    <a href="voucher.html">Super Value Deals - Save more with coupons</a>
+                    <a href="voucher.php">Super Value Deals - Save more with coupons</a>
                 </p>
 
                 <div class="header__contact">
-                    <span><a href="helpcenter.html"> Help Center</a></span>
-                    <span><a href="login-register.html"> Log In / Sign Up</a></span>
+                    <span><a href="helpcenter.php"> Help Center</a></span>
+                    <span><a href="login-register.php"> Log In / Sign Up</a></span>
                 </div>
             </div>
         </div>
 
         <nav class="nav container">
-            <a href="index.html" class="nav__logo">
+            <a href="index.php" class="nav__logo">
                 <img src="assets/img/feelin'.png" alt="" class="nav__logo-img">
             </a>
 
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="index.html" class="nav__link active">Home</a>
+                        <a href="index.php" class="nav__link active">Home</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="shop.html" class="nav__link">Shop</a>
+                        <a href="shop.php" class="nav__link">Shop</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="accounts.html" class="nav__link">My Account</a>
+                        <a href="accounts.php" class="nav__link">My Account</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="compare.html" class="nav__link">Compare</a>
+                        <a href="compare.php" class="nav__link">Compare</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="contact.html" class="nav__link">Contact</a>
+                        <a href="contact.php" class="nav__link">Contact</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="login-register.html" class="nav__link">Login</a>
+                        <a href="login-register.php" class="nav__link">Login</a>
                     </li>
                 </ul>
 
@@ -79,17 +79,17 @@
             </div>
 
             <div class="header__user-actions">
-                <a href="wishlist.html" class="header__action-btn">
+                <a href="wishlist.php" class="header__action-btn">
                     <i class='bx bxs-heart'></i>
                     <span class="count">8</span>
                 </a>
 
-                <a href="cart.html" class="header__action-btn">
+                <a href="cart.php" class="header__action-btn">
                     <i class='bx bxs-cart-alt'></i>
                     <span class="count">4</span>
                 </a>
 
-                <a href="chat.html" class="header__action-btn">
+                <a href="chat.php" class="header__action-btn">
                     <i class='bx bxs-envelope'></i>
                 </a>
             </div>
@@ -109,7 +109,7 @@
                     <p class="home__description">
                         Save more with coupons & up to 50% off
                     </p>
-                    <a href="shop.html" class="btn"><span>Shop Now</span></a>
+                    <a href="shop.php" class="btn"><span>Shop Now</span></a>
                 </div>
 
                 <img src="assets/img/home.jpg" alt="" class="home__img" />
@@ -122,49 +122,49 @@
 
             <div class="categories__container swiper">
                 <div class="swiper-wrapper">
-                    <a href="shop.html" class="category__item swiper-slide">
+                    <a href="shop.php" class="category__item swiper-slide">
                         <img src="assets/img/shirt1.jpg" alt="" class="category__img">
 
                         <h3 class="category__title">Baby Shirt</h3>
                     </a>
 
-                    <a href="shop.html" class="category__item swiper-slide">
+                    <a href="shop.php" class="category__item swiper-slide">
                         <img src="assets/img/shoes2.jpg" alt="" class="category__img">
 
                         <h3 class="category__title">Baby Shoes</h3>
                     </a>
 
-                    <a href="shop.html" class="category__item swiper-slide">
+                    <a href="shop.php" class="category__item swiper-slide">
                         <img src="assets/img/bodysuit3.jpg" alt="" class="category__img">
 
                         <h3 class="category__title">Baby Bodysuit</h3>
                     </a>
 
-                    <a href="shop.html" class="category__item swiper-slide">
+                    <a href="shop.php" class="category__item swiper-slide">
                         <img src="assets/img/socks4.jpg" alt="" class="category__img">
 
                         <h3 class="category__title">Baby Socks</h3>
                     </a>
 
-                    <a href="shop.html" class="category__item swiper-slide">
+                    <a href="shop.php" class="category__item swiper-slide">
                         <img src="assets/img/tempattidur5.jpg" alt="" class="category__img">
 
                         <h3 class="category__title">Baby Stroller</h3>
                     </a>
 
-                    <a href="shop.html" class="category__item swiper-slide">
+                    <a href="shop.php" class="category__item swiper-slide">
                         <img src="assets/img/pita6.jpg" alt="" class="category__img">
 
                         <h3 class="category__title">Baby Ribbon</h3>
                     </a>
 
-                    <a href="shop.html" class="category__item swiper-slide">
+                    <a href="shop.php" class="category__item swiper-slide">
                         <img src="assets/img/babyshirt7.jpg" alt="" class="category__img">
 
                         <h3 class="category__title">Baby Shirt</h3>
                     </a>
 
-                    <a href="shop.html" class="category__item swiper-slide">
+                    <a href="shop.php" class="category__item swiper-slide">
                         <img src="assets/img/babyshirt8.jpg" alt="" class="category__img">
 
                         <h3 class="category__title">Baby Shirt</h3>
@@ -195,7 +195,7 @@
                     <div class="products__container grid">
                         <div class="product__item">
                             <div class="product__banner">
-                                <a href="details.html" class="product__images">
+                                <a href="details.php" class="product__images">
                                     <img src="assets/img/1.jpg" alt="" class="product__img default" />
 
                                     <img src="assets/img/1.jpg" alt="" class="product__img hover" />
@@ -220,7 +220,7 @@
 
                             <div class="product__content">
                                 <span class="product__category">Clothing</span>
-                                <a href="details.html">
+                                <a href="details.php">
                                     <h3 class="product__title">Ice Cream Shirt</h3>
                                 </a>
                                 <div class="product__rating">
@@ -244,7 +244,7 @@
 
                         <div class="product__item">
                             <div class="product__banner">
-                                <a href="details.html" class="product__images">
+                                <a href="details.php" class="product__images">
                                     <img src="assets/img/2.jpg" alt="" class="product__img default" />
 
                                     <img src="assets/img/2.jpg" alt="" class="product__img hover" />
@@ -269,7 +269,7 @@
 
                             <div class="product__content">
                                 <span class="product__category">Clothing</span>
-                                <a href="details.html">
+                                <a href="details.php">
                                     <h3 class="product__title">Circle Shirt</h3>
                                 </a>
                                 <div class="product__rating">
@@ -293,7 +293,7 @@
 
                         <div class="product__item">
                             <div class="product__banner">
-                                <a href="details.html" class="product__images">
+                                <a href="details.php" class="product__images">
                                     <img src="assets/img/3.jpg" alt="" class="product__img default" />
 
                                     <img src="assets/img/3.jpg" alt="" class="product__img hover" />
@@ -318,7 +318,7 @@
 
                             <div class="product__content">
                                 <span class="product__category">Clothing</span>
-                                <a href="details.html">
+                                <a href="details.php">
                                     <h3 class="product__title">Bundle Baby Shirt</h3>
                                 </a>
                                 <div class="product__rating">
@@ -342,7 +342,7 @@
 
                         <div class="product__item">
                             <div class="product__banner">
-                                <a href="details.html" class="product__images">
+                                <a href="details.php" class="product__images">
                                     <img src="assets/img/4.jpg" alt="" class="product__img default" />
 
                                     <img src="assets/img/4.jpg" alt="" class="product__img hover" />
@@ -367,7 +367,7 @@
 
                             <div class="product__content">
                                 <span class="product__category">Clothing</span>
-                                <a href="details.html">
+                                <a href="details.php">
                                     <h3 class="product__title">Buy 2 Get 1</h3>
                                 </a>
                                 <div class="product__rating">
@@ -391,7 +391,7 @@
 
                         <div class="product__item">
                             <div class="product__banner">
-                                <a href="details.html" class="product__images">
+                                <a href="details.php" class="product__images">
                                     <img src="assets/img/5.jpg" alt="" class="product__img default" />
 
                                     <img src="assets/img/5.jpg" alt="" class="product__img hover" />
@@ -416,7 +416,7 @@
 
                             <div class="product__content">
                                 <span class="product__category">Clothing</span>
-                                <a href="details.html">
+                                <a href="details.php">
                                     <h3 class="product__title">Green Jumper</h3>
                                 </a>
                                 <div class="product__rating">
@@ -440,7 +440,7 @@
 
                         <div class="product__item">
                             <div class="product__banner">
-                                <a href="details.html" class="product__images">
+                                <a href="details.php" class="product__images">
                                     <img src="assets/img/6.jpg" alt="" class="product__img default" />
 
                                     <img src="assets/img/6.jpg" alt="" class="product__img hover" />
@@ -465,7 +465,7 @@
 
                             <div class="product__content">
                                 <span class="product__category">Clothing</span>
-                                <a href="details.html">
+                                <a href="details.php">
                                     <h3 class="product__title">Buy 1 Get 1 Jumper</h3>
                                 </a>
                                 <div class="product__rating">
@@ -489,7 +489,7 @@
 
                         <div class="product__item">
                             <div class="product__banner">
-                                <a href="details.html" class="product__images">
+                                <a href="details.php" class="product__images">
                                     <img src="assets/img/7.jpg" alt="" class="product__img default" />
 
                                     <img src="assets/img/7.jpg" alt="" class="product__img hover" />
@@ -514,7 +514,7 @@
 
                             <div class="product__content">
                                 <span class="product__category">Clothing</span>
-                                <a href="details.html">
+                                <a href="details.php">
                                     <h3 class="product__title">Bear Jumper</h3>
                                 </a>
                                 <div class="product__rating">
@@ -538,7 +538,7 @@
 
                         <div class="product__item">
                             <div class="product__banner">
-                                <a href="details.html" class="product__images">
+                                <a href="details.php" class="product__images">
                                     <img src="assets/img/8.jpg" alt="" class="product__img default" />
 
                                     <img src="assets/img/8.jpg" alt="" class="product__img hover" />
@@ -562,7 +562,7 @@
 
                             <div class="product__content">
                                 <span class="product__category">Clothing</span>
-                                <a href="details.html">
+                                <a href="details.php">
                                     <h3 class="product__title">Bear Jumper</h3>
                                 </a>
                                 <div class="product__rating">
@@ -590,7 +590,7 @@
                     <div class="products__container grid">
                         <div class="product__item">
                             <div class="product__banner">
-                                <a href="details.html" class="product__images">
+                                <a href="details.php" class="product__images">
                                     <img src="assets/img/10.jpg" alt="" class="product__img default" />
 
                                     <img src="assets/img/10.jpg" alt="" class="product__img hover" />
@@ -615,7 +615,7 @@
 
                             <div class="product__content">
                                 <span class="product__category">Clothing</span>
-                                <a href="details.html">
+                                <a href="details.php">
                                     <h3 class="product__title">Colorful Pattern Shirt</h3>
                                 </a>
                                 <div class="product__rating">
@@ -639,7 +639,7 @@
 
                         <div class="product__item">
                             <div class="product__banner">
-                                <a href="details.html" class="product__images">
+                                <a href="details.php" class="product__images">
                                     <img src="assets/img/9.jpg" alt="" class="product__img default" />
 
                                     <img src="assets/img/9.jpg" alt="" class="product__img hover" />
@@ -664,7 +664,7 @@
 
                             <div class="product__content">
                                 <span class="product__category">Clothing</span>
-                                <a href="details.html">
+                                <a href="details.php">
                                     <h3 class="product__title">Elephant Shirt</h3>
                                 </a>
                                 <div class="product__rating">
@@ -688,7 +688,7 @@
 
                         <div class="product__item">
                             <div class="product__banner">
-                                <a href="details.html" class="product__images">
+                                <a href="details.php" class="product__images">
                                     <img src="assets/img/8.jpg" alt="" class="product__img default" />
 
                                     <img src="assets/img/8.jpg" alt="" class="product__img hover" />
@@ -713,7 +713,7 @@
 
                             <div class="product__content">
                                 <span class="product__category">Clothing</span>
-                                <a href="details.html">
+                                <a href="details.php">
                                     <h3 class="product__title">Bear Pattern Shirt</h3>
                                 </a>
                                 <div class="product__rating">
@@ -737,7 +737,7 @@
 
                         <div class="product__item">
                             <div class="product__banner">
-                                <a href="details.html" class="product__images">
+                                <a href="details.php" class="product__images">
                                     <img src="assets/img/7.jpg" alt="" class="product__img default" />
 
                                     <img src="assets/img/7.jpg" alt="" class="product__img hover" />
@@ -762,7 +762,7 @@
 
                             <div class="product__content">
                                 <span class="product__category">Clothing</span>
-                                <a href="details.html">
+                                <a href="details.php">
                                     <h3 class="product__title">Bear Shirt</h3>
                                 </a>
                                 <div class="product__rating">
@@ -786,7 +786,7 @@
 
                         <div class="product__item">
                             <div class="product__banner">
-                                <a href="details.html" class="product__images">
+                                <a href="details.php" class="product__images">
                                     <img src="assets/img/6.jpg" alt="" class="product__img default" />
 
                                     <img src="assets/img/6.jpg" alt="" class="product__img hover" />
@@ -811,7 +811,7 @@
 
                             <div class="product__content">
                                 <span class="product__category">Clothing</span>
-                                <a href="details.html">
+                                <a href="details.php">
                                     <h3 class="product__title">Buy 1 Get 1</h3>
                                 </a>
                                 <div class="product__rating">
@@ -835,7 +835,7 @@
 
                         <div class="product__item">
                             <div class="product__banner">
-                                <a href="details.html" class="product__images">
+                                <a href="details.php" class="product__images">
                                     <img src="assets/img/5.jpg" alt="" class="product__img default" />
 
                                     <img src="assets/img/5.jpg" alt="" class="product__img hover" />
@@ -860,7 +860,7 @@
 
                             <div class="product__content">
                                 <span class="product__category">Clothing</span>
-                                <a href="details.html">
+                                <a href="details.php">
                                     <h3 class="product__title">Green Shirt</h3>
                                 </a>
                                 <div class="product__rating">
@@ -884,7 +884,7 @@
 
                         <div class="product__item">
                             <div class="product__banner">
-                                <a href="details.html" class="product__images">
+                                <a href="details.php" class="product__images">
                                     <img src="assets/img/4.jpg" alt="" class="product__img default" />
 
                                     <img src="assets/img/4.jpg" alt="" class="product__img hover" />
@@ -909,7 +909,7 @@
 
                             <div class="product__content">
                                 <span class="product__category">Clothing</span>
-                                <a href="details.html">
+                                <a href="details.php">
                                     <h3 class="product__title">Buy 2 Get 1</h3>
                                 </a>
                                 <div class="product__rating">
@@ -933,7 +933,7 @@
 
                         <div class="product__item">
                             <div class="product__banner">
-                                <a href="details.html" class="product__images">
+                                <a href="details.php" class="product__images">
                                     <img src="assets/img/3.jpg" alt="" class="product__img default" />
 
                                     <img src="assets/img/3.jpg" alt="" class="product__img hover" />
@@ -957,7 +957,7 @@
 
                             <div class="product__content">
                                 <span class="product__category">Clothing</span>
-                                <a href="details.html">
+                                <a href="details.php">
                                     <h3 class="product__title">Buy 2 Get 1</h3>
                                 </a>
                                 <div class="product__rating">
@@ -985,7 +985,7 @@
                     <div class="products__container grid">
                         <div class="product__item">
                             <div class="product__banner">
-                                <a href="details.html" class="product__images">
+                                <a href="details.php" class="product__images">
                                     <img src="assets/img/1.jpg" alt="" class="product__img default" />
 
                                     <img src="assets/img/1.jpg" alt="" class="product__img hover" />
@@ -1010,7 +1010,7 @@
 
                             <div class="product__content">
                                 <span class="product__category">Clothing</span>
-                                <a href="details.html">
+                                <a href="details.php">
                                     <h3 class="product__title">Colorful Pattern Shirt</h3>
                                 </a>
                                 <div class="product__rating">
@@ -1034,7 +1034,7 @@
 
                         <div class="product__item">
                             <div class="product__banner">
-                                <a href="details.html" class="product__images">
+                                <a href="details.php" class="product__images">
                                     <img src="assets/img/2.jpg" alt="" class="product__img default" />
 
                                     <img src="assets/img/2.jpg" alt="" class="product__img hover" />
@@ -1059,7 +1059,7 @@
 
                             <div class="product__content">
                                 <span class="product__category">Clothing</span>
-                                <a href="details.html">
+                                <a href="details.php">
                                     <h3 class="product__title">Colorful Pattern Shirt</h3>
                                 </a>
                                 <div class="product__rating">
@@ -1083,7 +1083,7 @@
 
                         <div class="product__item">
                             <div class="product__banner">
-                                <a href="details.html" class="product__images">
+                                <a href="details.php" class="product__images">
                                     <img src="assets/img/3.jpg" alt="" class="product__img default" />
 
                                     <img src="assets/img/3.jpg" alt="" class="product__img hover" />
@@ -1108,7 +1108,7 @@
 
                             <div class="product__content">
                                 <span class="product__category">Clothing</span>
-                                <a href="details.html">
+                                <a href="details.php">
                                     <h3 class="product__title">Colorful Pattern Shirt</h3>
                                 </a>
                                 <div class="product__rating">
@@ -1132,7 +1132,7 @@
 
                         <div class="product__item">
                             <div class="product__banner">
-                                <a href="details.html" class="product__images">
+                                <a href="details.php" class="product__images">
                                     <img src="assets/img/4.jpg" alt="" class="product__img default" />
 
                                     <img src="assets/img/4.jpg" alt="" class="product__img hover" />
@@ -1157,7 +1157,7 @@
 
                             <div class="product__content">
                                 <span class="product__category">Clothing</span>
-                                <a href="details.html">
+                                <a href="details.php">
                                     <h3 class="product__title">Colorful Pattern Shirt</h3>
                                 </a>
                                 <div class="product__rating">
@@ -1181,7 +1181,7 @@
 
                         <div class="product__item">
                             <div class="product__banner">
-                                <a href="details.html" class="product__images">
+                                <a href="details.php" class="product__images">
                                     <img src="assets/img/5.jpg" alt="" class="product__img default" />
 
                                     <img src="assets/img/5.jpg" alt="" class="product__img hover" />
@@ -1206,7 +1206,7 @@
 
                             <div class="product__content">
                                 <span class="product__category">Clothing</span>
-                                <a href="details.html">
+                                <a href="details.php">
                                     <h3 class="product__title">Colorful Pattern Shirt</h3>
                                 </a>
                                 <div class="product__rating">
@@ -1230,7 +1230,7 @@
 
                         <div class="product__item">
                             <div class="product__banner">
-                                <a href="details.html" class="product__images">
+                                <a href="details.php" class="product__images">
                                     <img src="assets/img/6.jpg" alt="" class="product__img default" />
 
                                     <img src="assets/img/6.jpg" alt="" class="product__img hover" />
@@ -1418,7 +1418,7 @@
                     </div>
 
                     <div class="deals__btn">
-                        <a href="details.html" class="btn btn--md">Shop Now</a>
+                        <a href="details.php" class="btn btn--md">Shop Now</a>
                     </div>
                 </div>
 
@@ -1459,7 +1459,7 @@
                     </div>
 
                     <div class="deals__btn">
-                        <a href="details.html" class="btn btn--md">Shop Now</a>
+                        <a href="details.php" class="btn btn--md">Shop Now</a>
                     </div>
                 </div>
             </div>
@@ -2124,7 +2124,7 @@
     <footer class="footer__container">
         <div class="footer__container grid">
             <div class="footer__content">
-                <a href="index.html" class="footer__logo">
+                <a href="index.php" class="footer__logo">
                     <img src="assets/img/feelin'.png" alt="" class="footer__logo-img">
                 </a>
 

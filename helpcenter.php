@@ -3,68 +3,70 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=g, initial-scale=1.0">
-    <title>Contact | Baby World</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--============ FLATICON ==============-->
+    <link rel='stylesheet'
+        href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-straight/css/uicons-regular-straight.css'>
+    <!--============ SWIPER CSS ==============-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!--============ CSS ==============-->
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-        rel="stylesheet">
+
+    <link rel="stylesheet" href="">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <script src="projectuid.js" defer></script>
+    <title>Help Center | Baby World</title>
 </head>
 
 <body>
-
     <!--============ HEADER ==============-->
     <header class="header">
         <div class="header__top">
             <div class="header__container container">
                 <div class="header__contact">
                     <span>0865-9712-0151</span>
-                    <span><a href="location.html">Our Location</a></span>
+                    <span><a href="location.php">Our Location</a></span>
                 </div>
 
                 <p class="header__alert-news">
-                    <a href="voucher.html">Super Value Deals - Save more with coupons</a>
+                    <a href="voucher.php">Super Value Deals - Save more with coupons</a>
                 </p>
 
                 <div class="header__contact">
-                    <span><a href="helpcenter.html"> Help Center</a></span>
-                    <span><a href="login-register.html"> Log In / Sign Up</a></span>
+                    <span><a href="helpcenter.php"> Help Center</a></span>
+                    <span><a href="login-register.php"> Log In / Sign Up</a></span>
                 </div>
             </div>
         </div>
 
         <nav class="nav container">
-            <a href="index.html" class="nav__logo">
+            <a href="index.php" class="nav__logo">
                 <img src="assets/img/feelin'.png" alt="" class="nav__logo-img">
             </a>
 
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="index.html" class="nav__link active">Home</a>
+                        <a href="index.php" class="nav__link active">Home</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="shop.html" class="nav__link">Shop</a>
+                        <a href="shop.php" class="nav__link">Shop</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="accounts.html" class="nav__link">My Account</a>
+                        <a href="accounts.php" class="nav__link">My Account</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="compare.html" class="nav__link">Compare</a>
+                        <a href="compare.php" class="nav__link">Compare</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="contact.html" class="nav__link">Contact</a>
+                        <a href="contact.php" class="nav__link">Contact</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="login-register.html" class="nav__link">Login</a>
+                        <a href="login-register.php" class="nav__link">Login</a>
                     </li>
                 </ul>
 
@@ -78,89 +80,117 @@
             </div>
 
             <div class="header__user-actions">
-                <a href="wishlist.html" class="header__action-btn">
+                <a href="wishlist.php" class="header__action-btn">
                     <i class='bx bxs-heart'></i>
                     <span class="count">8</span>
                 </a>
 
-                <a href="cart.html" class="header__action-btn">
+                <a href="cart.php" class="header__action-btn">
                     <i class='bx bxs-cart-alt'></i>
                     <span class="count">4</span>
                 </a>
 
-                <a href="chat.html" class="header__action-btn">
+                <a href="chat.php" class="header__action-btn">
                     <i class='bx bxs-envelope'></i>
                 </a>
             </div>
         </nav>
     </header>
 
-    <div class="content">
-        <div class="text-content">
-            <h1>Connect with us</h1>
+    <!--============ BREADCRUMP ==============-->
+    <section class="breadcrumb">
+        <ul class="breadcrumb__list flex container">
+            <li><a href="index.php" class="breadcrumb__link">Home</a></li>
+            <li><span class="breadcrumb__link">></span></li>
+            <li><span class="breadcrumb__link">Help Center</span></li>
+        </ul>
+    </section>
 
+    <!--============ HELPCENTER ==============-->
+    <div class="main-banner custom-main-banner">
+        <h1>Hai, ada yang bisa kami bantu?</h1>
+        <div class="search-bar custom-search-bar">
+            <input placeholder="Search...." type="text" />
+
+            <button class="search-btn">
+                <i class='bx bx-search-alt'></i>
+            </button>
         </div>
     </div>
-    <div class="contact-box">
-        <div class="contact-left">
-            <h3>Sent your request</h3>
-            <form>
-                <div class="contact-input-row">
-                    <div class="contact-input-group">
-                        <label>Name</label>
-                        <input class="input-n-contact" type="text" placeholder="Masukan nama...">
-                    </div>
-                    <div class="contact-input-group">
-                        <label>Phone</label>
-                        <input class="input-p-contact" type="number" placeholder="Masukan nomor telp...">
-                    </div>
-                </div>
-                <div class="contact-input-row">
-                    <div class="contact-input-group">
-                        <label>Email</label>
-                        <input class="input-e-contact" type="email" placeholder="Masukan Email...">
-                    </div>
-                    <div class="contact-input-group">
-                        <label>Subject</label>
-                        <input class="input-s-contact" type="number" placeholder="Masukan nama produk...">
-                    </div>
-                </div>
 
-                <label>Message</label>
-                <textarea rows="5" placeholder="Pesan..."></textarea>
-                <button class="button-contact" type="submit">SEND</button>
-            </form>
-        </div>
-        <div class="contact-right">
-            <h3>Reach Us</h3>
-
-            <table type="table-contact">
-                <tr>
-                    <td>Email : </td>
-                    <td>info@baby.co</td>
-                </tr>
-                <tr>
-                    <td>Phone : </td>
-                    <td>+62 865-9712-0151</td>
-                </tr>
-                <tr>
-                    <td>Address : </td>
-                    <td>Jl. Telekomunikasi, No 73,
-                        Bandung, Jawa Barat.</td>
-                </tr>
-            </table>
+    <div class="categories custom-categories">
+        <h2>Kategori</h2>
+        <div class="category-grid">
+            <div class="category-item">
+                <img src="assets/img/HelpCenter/Akun.png" alt="Akun & Keamanan icon" height="40" width="50" />
+                <p>Akun & Keamanan</p>
+            </div>
+            <div class="category-item">
+                <img src="assets/img/HelpCenter/Pesanan.png" alt="Pesanan icon" height="40" width="50" />
+                <p>Pesanan</p>
+            </div>
+            <div class="category-item">
+                <img src="assets/img/HelpCenter/Pembayaran.png" alt="Pembayaran icon" height="40" width="50" />
+                <p>Pembayaran</p>
+            </div>
+            <div class="category-item">
+                <img src="assets/img/HelpCenter/Pengiriman.png" alt="Pengiriman icon" height="40" width="50" />
+                <p>Pengiriman</p>
+            </div>
+            <div class="category-item">
+                <img src="assets/img/HelpCenter/Pengembalian Dana.png" alt="Pengembalian Dana icon" height="40"
+                    width="50" />
+                <p>Pengembalian Dana</p>
+            </div>
+            <div class="category-item">
+                <img src="assets/img/HelpCenter/Komplain.png" alt="Komplain icon" height="40" width="50" />
+                <p>Komplain Pesanan</p>
+            </div>
+            <div class="category-item">
+                <img src="assets/img/HelpCenter/Promosi.png" alt="Promosi icon" height="40" width="50" />
+                <p>Promosi</p>
+            </div>
+            <div class="category-item">
+                <img src="assets/img/HelpCenter/lainnya.png" alt="Informasi Lainnya icon" height="40" width="50" />
+                <p>Informasi Lainnya</p>
+            </div>
         </div>
     </div>
-    <div class="footer">
-        <div class="social">
-            <a href="https://www.instagram.com/babyworldjogja/?utm_source=ig_web_button_share_sheet"
-                target="_blank">instagram</a>
-            <a href="https://api.whatsapp.com/send/?phone=6281313872004&text&type=phone_number&app_absent=0"
-                target="_blank">whatsapp</a>
-            <a href="https://x.com/BabyWorld97" target="_blank">twitter</a>
-            <a href="https://web.facebook.com/profile.php?id=100084992343547" target="_blank">facebook</a>
+
+    <!--============ FAQ ==============-->
+    <div class="faq-container">
+        <h1>FAQ</h1>
+        <div class="faq-list">
+            <div class="faq-item">
+                <a href="faq.html" class="faq-title">[Akun & Keamanan] Saya lupa kata sandi saya, bagaimana cara
+                    menggantinya?</a>
+            </div>
+            <div class="faq-item">
+                <a href="faq.html" class="faq-title">[Pesanan] Apakah saya dapat membatalkan pesanan saya?</a>
+            </div>
+            <div class="faq-item">
+                <a href="faq.html" class="faq-title">[Pembayaran] Apa saja kartu kredit/debit yang dapat digunakan untuk
+                    melakukan pembelian?</a>
+            </div>
+            <div class="faq-item">
+                <a href="faq.html" class="faq-title">[Pengiriman] Apa itu layanan Kirim Instant?</a>
+            </div>
+            <div class="faq-item">
+                <a href="faq.html" class="faq-title">[Pengembalian Dana] Bagaimana proses pengembalian dana untuk
+                    pesanan yang dibatalkan?</a>
+            </div>
+            <div class="faq-item">
+                <a href="faq.html" class="faq-title">[Komplain Pesanan] Siapa yang bertanggung jawab atas kerusakan
+                    barang yang terjadi saat pengiriman?</a>
+            </div>
+            <div class="faq-item">
+                <a href="faq.html" class="faq-title">[Promosi] Bagaimana cara menggunakan kode Voucher?</a>
+            </div>
         </div>
     </div>
+
+
+    <!--============ NEWSLETTER  ==============-->
     <section class="newsletter section home__newsletter">
         <div class="newsletter__container container grid">
             <h3 class="newsletter__title flex">
@@ -178,6 +208,8 @@
             </form>
         </div>
     </section>
+
+    <!--============ FOOTER ==============-->
     <footer class="footer__container">
         <div class="footer__container grid">
             <div class="footer__content">
@@ -250,10 +282,12 @@
 
             <div class="footer__content">
                 <h3 class="footer__title">Secured Payment Gateways</h3>
-                <img src="assets/img/card.png" alt="" class="payment__img">
-                <img src="assets/img/visa.png" alt="" class="payment__img">
-                <img src="assets/img/paypal.png" alt="" class="payment__img">
-                <img src="assets/img/jcb.png" alt="" class="payment__img">
+                <div class="footer__contents">
+                    <img src="assets/img/card.png" alt="" class="payment__img">
+                    <img src="assets/img/visa.png" alt="" class="payment__img">
+                    <img src="assets/img/paypal.png" alt="" class="payment__img">
+                    <img src="assets/img/jcb.png" alt="" class="payment__img">
+                </div>
             </div>
         </div>
 
@@ -263,14 +297,6 @@
         </div>
     </footer>
 
-    <!--============ SWIPER JS ==============-->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-    <!--============ SWIPER JS ==============-->
-    <script src="assets/js/main.js"></script>
-
-    <script src="assets/js/script.js"></script>
-</body>
 
 
 </html>

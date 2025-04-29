@@ -3,69 +3,80 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart | Baby World</title>
+    <title>Baby World</title>
+
+    <!--
+    - favicon
+  -->
+    <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
+
+    <!--
+    - custom css link
+  -->
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <!--
+    - google font link
+  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <script src="projectuid.js" defer></script>
+
 </head>
 
 <body>
-
     <!--============ HEADER ==============-->
     <header class="header">
         <div class="header__top">
             <div class="header__container container">
                 <div class="header__contact">
                     <span>0865-9712-0151</span>
-                    <span><a href="location.html">Our Location</a></span>
+                    <span><a href="location.php">Our Location</a></span>
                 </div>
 
                 <p class="header__alert-news">
-                    <a href="voucher.html">Super Value Deals - Save more with coupons</a>
+                    <a href="voucher.php">Super Value Deals - Save more with coupons</a>
                 </p>
 
                 <div class="header__contact">
-                    <span><a href="helpcenter.html"> Help Center</a></span>
-                    <span><a href="login-register.html"> Log In / Sign Up</a></span>
+                    <span><a href="helpcenter.php"> Help Center</a></span>
+                    <span><a href="login-register.php"> Log In / Sign Up</a></span>
                 </div>
             </div>
         </div>
 
         <nav class="nav container">
-            <a href="index.html" class="nav__logo">
+            <a href="index.php" class="nav__logo">
                 <img src="assets/img/feelin'.png" alt="" class="nav__logo-img">
             </a>
 
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="index.html" class="nav__link active">Home</a>
+                        <a href="index.php" class="nav__link active">Home</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="shop.html" class="nav__link">Shop</a>
+                        <a href="shop.php" class="nav__link">Shop</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="accounts.html" class="nav__link">My Account</a>
+                        <a href="accounts.php" class="nav__link">My Account</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="compare.html" class="nav__link">Compare</a>
+                        <a href="compare.php" class="nav__link">Compare</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="contact.html" class="nav__link">Contact</a>
+                        <a href="contact.php" class="nav__link">Contact</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="login-register.html" class="nav__link">Login</a>
+                        <a href="login-register.php" class="nav__link">Login</a>
                     </li>
                 </ul>
 
@@ -79,143 +90,125 @@
             </div>
 
             <div class="header__user-actions">
-                <a href="wishlist.html" class="header__action-btn">
+                <a href="wishlist.php" class="header__action-btn">
                     <i class='bx bxs-heart'></i>
                     <span class="count">8</span>
                 </a>
 
-                <a href="cart.html" class="header__action-btn">
+                <a href="cart.php" class="header__action-btn">
                     <i class='bx bxs-cart-alt'></i>
                     <span class="count">4</span>
                 </a>
 
-                <a href="chat.html" class="header__action-btn">
+                <a href="chat.php" class="header__action-btn">
                     <i class='bx bxs-envelope'></i>
                 </a>
             </div>
         </nav>
     </header>
 
-
     <!--============ BREADCRUMP ==============-->
     <section class="breadcrumb">
         <ul class="breadcrumb__list flex container">
-            <li><a href="index.html" class="breadcrumb__link">Home</a></li>
+            <li><a href="index.php" class="breadcrumb__link">Home</a></li>
             <li><span class="breadcrumb__link">></span></li>
-            <li><span class="breadcrumb__link">Cart</span></li>
+            <li><span class="breadcrumb__link"><a href="shop.html" class="breadcrumb__link">Shop</a></span></li>
+            <li><span class="breadcrumb__link">></span></li>
+            <li><span class="breadcrumb__link">Detail</span></li>
         </ul>
     </section>
 
-    <!--============ CART ==============-->
-    <section id="cart" class="section-p1">
-        <table width="100%">
-            <thead>
-                <tr>
-                    <td>Remove</td>
-                    <td>Item</td>
-                    <td>Product</td>
-                    <td>Price</td>
-                    <td>Quantity</td>
-                    <td>Subtotal</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><a href="#"><i class='bx bxs-checkbox-minus'></i></a></td>
-                    <td><img src="assets/img/1.jpg" alt=""></td>
-                    <td>Baby Katun Shirt</td>
-                    <td>Rp600.000,00</td>
-                    <td><input type="number" value="1"></td>
-                    <td>Rp600.000,00</td>
-                </tr>
-                <tr>
-                    <td><a href="#"><i class='bx bxs-checkbox-minus'></i></a></td>
-                    <td><img src="assets/img/7.jpg" alt=""></td>
-                    <td>Baby Katun Shirt</td>
-                    <td>Rp600.000,00</td>
-                    <td><input type="number" value="1"></td>
-                    <td>Rp600.000,00</td>
-                </tr>
-                <tr>
-                    <td><a href="#"><i class='bx bxs-checkbox-minus'></i></a></td>
-                    <td><img src="assets/img/8.jpg" alt=""></td>
-                    <td>Baby Katun Shirt</td>
-                    <td>Rp600.000,00</td>
-                    <td><input type="number" value="1"></td>
-                    <td>Rp600.000,00</td>
-                </tr>
-                <tr>
-                    <td><a href="#"><i class='bx bxs-checkbox-minus'></i></a></td>
-                    <td><img src="assets/img/6.jpg" alt=""></td>
-                    <td>Baby Katun Shirt</td>
-                    <td>Rp600.000,00</td>
-                    <td><input type="number" value="1"></td>
-                    <td>Rp600.000,00</td>
-                </tr>
-                <tr>
-                    <td><a href="#"><i class='bx bxs-checkbox-minus'></i></a></td>
-                    <td><img src="assets/img/9.jpg" alt=""></td>
-                    <td>Baby Katun Shirt</td>
-                    <td>Rp600.000,00</td>
-                    <td><input type="number" value="1"></td>
-                    <td>Rp600.000,00</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+    <!--- PRODUCT FEATURED -->
 
-    <section id="cart-add" class="section-p1">
-        <div id="coupon">
-            <h3>Apply Coupon</h3>
-            <div>
-                <input type="text" placeholder="Enter Your Coupon">
-                <button class="normal">Apply</button>
+    <div class="product-featured">
+        <div class="showcase">
+
+            <div class="details-container">
+                <img src="assets/img/shop/bottom2.jpg" class="main-image" height="400" width="300" />
+                <div class="thumbnail-container">
+                    <img src="assets/img/shop/dp1.jpeg" class="thumbnail" height="100" width="80" />
+                    <img src="assets/img/shop/dp1.jpeg" class="thumbnail" height="100" width="80" />
+                    <img src="assets/img/shop/dp1.jpeg" class="thumbnail" height="100" width="80" />
+                </div>
             </div>
-        </div>
-
-        <div id="subtotal">
-            <h3>Cart Totals</h3>
-            <table>
-                <tr>
-                    <td>Cart Total</td>
-                    <td>Rp1.000.000,00</td>
-                </tr>
-                <tr>
-                    <td>Shipping</td>
-                    <td>Free</td>
-                </tr>
-                <tr>
-                    <td><strong>Total</strong></td>
-                    <td><strong>Rp1.500.000,00</strong></td>
-                </tr>
-            </table>
-
-            <div class="button__co">
-                <a href="checkout.html" class="normal">Checkout</a>
-            </div>
-
-        </div>
-    </section>
-
-    <!--============ NEWSLETTER  ==============-->
-    <section class="newsletter section home__newsletter">
-        <div class="newsletter__container container grid">
-            <h3 class="newsletter__title flex">
-                <img src="assets/svg/mailbox-flag-up.svg" alt="" class="newsletter__icon">
-                Sign Up to Newsletter
-            </h3>
-
-            <p class="newsletter__description">
-                ...and receive Rp100.000 coupon for first shopping.
-            </p>
-
-            <form action="" class="newsletter__form">
-                <input type="text" placeholder="Enter your Email" class="newsletter__input">
-                <button type="submit" class="newsletter__btn">Subscribe</button>
-            </form>
-        </div>
-    </section>
 </body>
+
+</html>
+
+<div class="showcase-content">
+
+    <h2 class="showcase-title">Colorful Pattern Shirt</h2>
+    <div class="showcase-rating">
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+    </div>
+    <h3 class="showcase-title">Character Poplin</h3>
+
+    <p class="showcase-desc">
+        Karakter hewan berwarna-warni ini siap untuk musim panas, bukan?
+        Terbuat dari katun poplin, celana pendek ini ringan namun cukup kuat untuk menemani setiap petualangan.
+        Dengan ikat pinggang elastis sehingga mudah ditarik, Anda akan siap menghadapi hari cerah dalam waktu singkat.
+    </p>
+
+    <div class="price-box">
+        <p class="price">Rp 269.00</p>
+        <del>Rp 299.000</del>
+    </div>
+
+    <button class="add-cart-btn">add to cart</button>
+
+    <div class="size-options">
+        <div>
+            <button class="add-cart-btn">M</button>
+            <button class="add-cart-btn">L</button>
+            <button class="add-cart-btn">X</button>
+            <button class="add-cart-btn">XXL</button>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="product-description">
+    <h3>Description Product: </h3>
+    <ul>
+        <li>Cotton for comfort</li>
+        <li>Wide, elasticated waistband</li>
+        <li>Drawcord for a secure fit (cord is fixed at the back to prevent it being pulled all the way through)</li>
+        <li>Pockets</li>
+        <li>Roll-up hems</li>
+    </ul>
+    <p><strong>SNI:</strong> 2-135-135-230854-1</p>
+</div>
+
+<!--============ NEWSLETTER  ==============-->
+<section class="newsletter section home__newsletter">
+    <div class="newsletter__container container grid">
+        <h3 class="newsletter__title flex">
+            <img src="assets/svg/mailbox-flag-up.svg" alt="" class="newsletter__icon">
+            Sign Up to Newsletter
+        </h3>
+
+        <p class="newsletter__description">
+            ...and receive Rp100.000 coupon for first shopping.
+        </p>
+
+        <form action="" class="newsletter__form">
+            <input type="text" placeholder="Enter your Email" class="newsletter__input">
+            <button type="submit" class="newsletter__btn">Subscribe</button>
+        </form>
+    </div>
+</section>
+
+<!--
+    - custom js link
+  -->
+<script src="script.js"></script>
 
 <!--============ FOOTER ==============-->
 <footer class="footer__container">
@@ -306,5 +299,12 @@
 </footer>
 
 
+<!--
+    - ionicon link
+  -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
 
 </html>

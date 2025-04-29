@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout</title>
+    <title>Cart | Baby World</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,49 +23,49 @@
             <div class="header__container container">
                 <div class="header__contact">
                     <span>0865-9712-0151</span>
-                    <span><a href="location.html">Our Location</a></span>
+                    <span><a href="location.php">Our Location</a></span>
                 </div>
 
                 <p class="header__alert-news">
-                    <a href="voucher.html">Super Value Deals - Save more with coupons</a>
+                    <a href="voucher.php">Super Value Deals - Save more with coupons</a>
                 </p>
 
                 <div class="header__contact">
-                    <span><a href="helpcenter.html"> Help Center</a></span>
-                    <span><a href="login-register.html"> Log In / Sign Up</a></span>
+                    <span><a href="helpcenter.php"> Help Center</a></span>
+                    <span><a href="login-register.php"> Log In / Sign Up</a></span>
                 </div>
             </div>
         </div>
 
         <nav class="nav container">
-            <a href="index.html" class="nav__logo">
+            <a href="index.php" class="nav__logo">
                 <img src="assets/img/feelin'.png" alt="" class="nav__logo-img">
             </a>
 
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="index.html" class="nav__link active">Home</a>
+                        <a href="index.php" class="nav__link active">Home</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="shop.html" class="nav__link">Shop</a>
+                        <a href="shop.php" class="nav__link">Shop</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="accounts.html" class="nav__link">My Account</a>
+                        <a href="accounts.php" class="nav__link">My Account</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="compare.html" class="nav__link">Compare</a>
+                        <a href="compare.php" class="nav__link">Compare</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="contact.html" class="nav__link">Contact</a>
+                        <a href="contact.php" class="nav__link">Contact</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="login-register.html" class="nav__link">Login</a>
+                        <a href="login-register.php" class="nav__link">Login</a>
                     </li>
                 </ul>
 
@@ -79,145 +79,124 @@
             </div>
 
             <div class="header__user-actions">
-                <a href="wishlist.html" class="header__action-btn">
+                <a href="wishlist.php" class="header__action-btn">
                     <i class='bx bxs-heart'></i>
                     <span class="count">8</span>
                 </a>
 
-                <a href="cart.html" class="header__action-btn">
+                <a href="cart.php" class="header__action-btn">
                     <i class='bx bxs-cart-alt'></i>
                     <span class="count">4</span>
                 </a>
 
-                <a href="chat.html" class="header__action-btn">
+                <a href="chat.php" class="header__action-btn">
                     <i class='bx bxs-envelope'></i>
                 </a>
             </div>
         </nav>
     </header>
 
-
     <!--============ BREADCRUMP ==============-->
     <section class="breadcrumb">
         <ul class="breadcrumb__list flex container">
-            <li><a href="index.html" class="breadcrumb__link">Home</a></li>
+            <li><a href="index.php" class="breadcrumb__link">Home</a></li>
             <li><span class="breadcrumb__link">></span></li>
-            <li><span class="breadcrumb__link"><a href="cart.html" class="breadcrumb__link">Cart</a></span></li>
-            <li><span class="breadcrumb__link">></span></li>
-            <li><span class="breadcrumb__link">Checkout</span></li>
+            <li><span class="breadcrumb__link">Cart</span></li>
         </ul>
     </section>
 
-    <!--============ CHECKOUT ==============-->
-    <section class="checkout section--lg">
-        <div class="checkout__container container grid">
-            <div class="checkout__group">
-                <h3 class="section__title">Billing Details</h3>
+    <!--============ CART ==============-->
+    <section id="cart" class="section-p1">
+        <table width="100%">
+            <thead>
+                <tr>
+                    <td>Remove</td>
+                    <td>Item</td>
+                    <td>Product</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td>Subtotal</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="#"><i class='bx bxs-checkbox-minus'></i></a></td>
+                    <td><img src="assets/img/1.jpg" alt=""></td>
+                    <td>Baby Katun Shirt</td>
+                    <td>Rp600.000,00</td>
+                    <td><input type="number" value="1"></td>
+                    <td>Rp600.000,00</td>
+                </tr>
+                <tr>
+                    <td><a href="#"><i class='bx bxs-checkbox-minus'></i></a></td>
+                    <td><img src="assets/img/7.jpg" alt=""></td>
+                    <td>Baby Katun Shirt</td>
+                    <td>Rp600.000,00</td>
+                    <td><input type="number" value="1"></td>
+                    <td>Rp600.000,00</td>
+                </tr>
+                <tr>
+                    <td><a href="#"><i class='bx bxs-checkbox-minus'></i></a></td>
+                    <td><img src="assets/img/8.jpg" alt=""></td>
+                    <td>Baby Katun Shirt</td>
+                    <td>Rp600.000,00</td>
+                    <td><input type="number" value="1"></td>
+                    <td>Rp600.000,00</td>
+                </tr>
+                <tr>
+                    <td><a href="#"><i class='bx bxs-checkbox-minus'></i></a></td>
+                    <td><img src="assets/img/6.jpg" alt=""></td>
+                    <td>Baby Katun Shirt</td>
+                    <td>Rp600.000,00</td>
+                    <td><input type="number" value="1"></td>
+                    <td>Rp600.000,00</td>
+                </tr>
+                <tr>
+                    <td><a href="#"><i class='bx bxs-checkbox-minus'></i></a></td>
+                    <td><img src="assets/img/9.jpg" alt=""></td>
+                    <td>Baby Katun Shirt</td>
+                    <td>Rp600.000,00</td>
+                    <td><input type="number" value="1"></td>
+                    <td>Rp600.000,00</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 
-                <form action="" class="form grid">
-                    <input type="text" placeholder="Name" class="form__input">
-                    <input type="text" placeholder="Address" class="form__input">
-                    <input type="text" placeholder="City" class="form__input">
-                    <input type="text" placeholder="Country" class="form__input">
-                    <input type="text" placeholder="Post Code" class="form__input">
-                    <input type="text" placeholder="Phone" class="form__input">
-                    <input type="email" placeholder="Email" class="form__input">
+    <section id="cart-add" class="section-p1">
+        <div id="coupon">
+            <h3>Apply Coupon</h3>
+            <div>
+                <input type="text" placeholder="Enter Your Coupon">
+                <button class="normal">Apply</button>
+            </div>
+        </div>
 
-                    <h3 class="checkout__title">Additional Information</h3>
+        <div id="subtotal">
+            <h3>Cart Totals</h3>
+            <table>
+                <tr>
+                    <td>Cart Total</td>
+                    <td>Rp1.000.000,00</td>
+                </tr>
+                <tr>
+                    <td>Shipping</td>
+                    <td>Free</td>
+                </tr>
+                <tr>
+                    <td><strong>Total</strong></td>
+                    <td><strong>Rp1.500.000,00</strong></td>
+                </tr>
+            </table>
 
-                    <textarea name="" placeholder="Order note" id="" cols="30" rows="10"
-                        class="form__input textarea"></textarea>
-                </form>
+            <div class="button__co">
+                <a href="checkout.html" class="normal">Checkout</a>
             </div>
 
-            <div class="checkout__group">
-                <h3 class="section__title">Cart Totals</h3>
-
-                <table class="order__table">
-                    <tr>
-                        <th colspan="2">Products</th>
-                        <th>Total</th>
-                    </tr>
-
-                    <tr>
-                        <td><img src="assets/img/10.jpg" class="order__img" alt=""></td>
-
-                        <td>
-                            <h3 class="table__title">Cute Summer Blue</h3>
-                            <p class="table__quantity">x 2</p>
-                        </td>
-
-                        <td><span class="table__price">Rp245.000,00</span></td>
-                    </tr>
-
-                    <tr>
-                        <td><img src="assets/img/8.jpg" class="order__img" alt=""></td>
-
-                        <td>
-                            <h3 class="table__title">Cute Summer Blue</h3>
-                            <p class="table__quantity">x 2</p>
-                        </td>
-
-                        <td><span class="table__price">Rp245.000,00</span></td>
-                    </tr>
-
-                    <tr>
-                        <td><img src="assets/img/6.jpg" class="order__img" alt=""></td>
-
-                        <td>
-                            <h3 class="table__title">Cute Summer Blue</h3>
-                            <p class="table__quantity">x 2</p>
-                        </td>
-
-                        <td><span class="table__price">Rp245.000,00</span></td>
-                    </tr>
-
-                    <tr>
-                        <td><span class="order__subtitle">SubTotal</span></td>
-                        <td colspan="2"><span class="table__price">Rp756.000,00</span></td>
-                    </tr>
-
-
-                    <tr>
-                        <td><span class="order__subtitle">Shipping</span></td>
-                        <td colspan="2"><span class="table__price">Free Shipping</span></td>
-                    </tr>
-
-                    <tr>
-                        <td><span class="order__subtitle">Total</span></td>
-                        <td colspan="2"><span class="order__grand-total">Rp845.000,00</span></td>
-                    </tr>
-
-                </table>
-
-                <div class="payment__methods">
-                    <h3 class="checkout__title payment__title">Payment</h3>
-
-                    <div class="payment__option flex">
-                        <input type="radio" name="radio" checked class="payment__input">
-                        <label for="" class="payment__label">Direct Bank Transfer</label>
-                    </div>
-
-                    <div class="payment__option flex">
-                        <input type="radio" name="radio" checked class="payment__input">
-                        <label for="" class="payment__label">Check Payment</label>
-                    </div>
-
-                    <div class="payment__option flex">
-                        <input type="radio" name="radio" checked class="payment__input">
-                        <label for="" class="payment__label">Paypal</label>
-                    </div>
-                </div>
-
-                <div class="checkout__btn">
-                    <button>Place Order</button>
-                </div>
-
-            </div>
         </div>
     </section>
 
-    <!--============ NEWSLETTER ==============-->
+    <!--============ NEWSLETTER  ==============-->
     <section class="newsletter section home__newsletter">
         <div class="newsletter__container container grid">
             <h3 class="newsletter__title flex">
@@ -237,8 +216,8 @@
     </section>
 </body>
 
-  <!--============ FOOTER ==============-->
-  <footer class="footer__container">
+<!--============ FOOTER ==============-->
+<footer class="footer__container">
     <div class="footer__container grid">
         <div class="footer__content">
             <a href="index.html" class="footer__logo">
@@ -324,6 +303,7 @@
         <span class="designer">Designed by DianNadineAkhtar</span>
     </div>
 </footer>
+
 
 
 </html>

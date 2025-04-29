@@ -22,49 +22,49 @@
             <div class="header__container container">
                 <div class="header__contact">
                     <span>0865-9712-0151</span>
-                    <span><a href="location.html">Our Location</a></span>
+                    <span><a href="location.php">Our Location</a></span>
                 </div>
 
                 <p class="header__alert-news">
-                    <a href="voucher.html">Super Value Deals - Save more with coupons</a>
+                    <a href="voucher.php">Super Value Deals - Save more with coupons</a>
                 </p>
 
                 <div class="header__contact">
-                    <span><a href="helpcenter.html"> Help Center</a></span>
-                    <span><a href="login-register.html"> Log In / Sign Up</a></span>
+                    <span><a href="helpcenter.php"> Help Center</a></span>
+                    <span><a href="login-register.php"> Log In / Sign Up</a></span>
                 </div>
             </div>
         </div>
 
         <nav class="nav container">
-            <a href="index.html" class="nav__logo">
+            <a href="index.php" class="nav__logo">
                 <img src="assets/img/feelin'.png" alt="" class="nav__logo-img">
             </a>
 
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="index.html" class="nav__link active">Home</a>
+                        <a href="index.php" class="nav__link active">Home</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="shop.html" class="nav__link">Shop</a>
+                        <a href="shop.php" class="nav__link">Shop</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="accounts.html" class="nav__link">My Account</a>
+                        <a href="accounts.php" class="nav__link">My Account</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="compare.html" class="nav__link">Compare</a>
+                        <a href="compare.php" class="nav__link">Compare</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="contact.html" class="nav__link">Contact</a>
+                        <a href="contact.php" class="nav__link">Contact</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="login-register.html" class="nav__link">Login</a>
+                        <a href="login-register.php" class="nav__link">Login</a>
                     </li>
                 </ul>
 
@@ -78,17 +78,17 @@
             </div>
 
             <div class="header__user-actions">
-                <a href="wishlist.html" class="header__action-btn">
+                <a href="wishlist.php" class="header__action-btn">
                     <i class='bx bxs-heart'></i>
                     <span class="count">8</span>
                 </a>
 
-                <a href="cart.html" class="header__action-btn">
+                <a href="cart.php" class="header__action-btn">
                     <i class='bx bxs-cart-alt'></i>
                     <span class="count">4</span>
                 </a>
 
-                <a href="chat.html" class="header__action-btn">
+                <a href="chat.php" class="header__action-btn">
                     <i class='bx bxs-envelope'></i>
                 </a>
             </div>
@@ -98,7 +98,7 @@
     <!--============ BREADCRUMP ==============-->
     <section class="breadcrumb">
         <ul class="breadcrumb__list flex container">
-            <li><a href="index.html" class="breadcrumb__link">Home</a></li>
+            <li><a href="index.php" class="breadcrumb__link">Home</a></li>
             <li><span class="breadcrumb__link">></span></li>
             <li><span class="breadcrumb__link">Location</span></li>
         </ul>

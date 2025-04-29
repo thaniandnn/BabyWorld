@@ -24,49 +24,49 @@
             <div class="header__container container">
                 <div class="header__contact">
                     <span>0865-9712-0151</span>
-                    <span><a href="location.html">Our Location</a></span>
+                    <span><a href="location.php">Our Location</a></span>
                 </div>
 
                 <p class="header__alert-news">
-                    <a href="voucher.html">Super Value Deals - Save more with coupons</a>
+                    <a href="voucher.php">Super Value Deals - Save more with coupons</a>
                 </p>
 
                 <div class="header__contact">
-                    <span><a href="helpcenter.html"> Help Center</a></span>
-                    <span><a href="login-register.html"> Log In / Sign Up</a></span>
+                    <span><a href="helpcenter.php"> Help Center</a></span>
+                    <span><a href="login-register.php"> Log In / Sign Up</a></span>
                 </div>
             </div>
         </div>
 
         <nav class="nav container">
-            <a href="index.html" class="nav__logo">
+            <a href="index.php" class="nav__logo">
                 <img src="assets/img/feelin'.png" alt="" class="nav__logo-img">
             </a>
 
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="index.html" class="nav__link active">Home</a>
+                        <a href="index.php" class="nav__link active">Home</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="shop.html" class="nav__link">Shop</a>
+                        <a href="shop.php" class="nav__link">Shop</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="accounts.html" class="nav__link">My Account</a>
+                        <a href="accounts.php" class="nav__link">My Account</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="compare.html" class="nav__link">Compare</a>
+                        <a href="compare.php" class="nav__link">Compare</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="contact.html" class="nav__link">Contact</a>
+                        <a href="contact.php" class="nav__link">Contact</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="login-register.html" class="nav__link">Login</a>
+                        <a href="login-register.php" class="nav__link">Login</a>
                     </li>
                 </ul>
 
@@ -80,17 +80,17 @@
             </div>
 
             <div class="header__user-actions">
-                <a href="wishlist.html" class="header__action-btn">
+                <a href="wishlist.php" class="header__action-btn">
                     <i class='bx bxs-heart'></i>
                     <span class="count">8</span>
                 </a>
 
-                <a href="cart.html" class="header__action-btn">
+                <a href="cart.php" class="header__action-btn">
                     <i class='bx bxs-cart-alt'></i>
                     <span class="count">4</span>
                 </a>
 
-                <a href="chat.html" class="header__action-btn">
+                <a href="chat.php" class="header__action-btn">
                     <i class='bx bxs-envelope'></i>
                 </a>
             </div>
@@ -100,145 +100,74 @@
     <!--============ BREADCRUMP ==============-->
     <section class="breadcrumb">
         <ul class="breadcrumb__list flex container">
-            <li><a href="index.html" class="breadcrumb__link">Home</a></li>
+            <li><a href="index.php" class="breadcrumb__link">Home</a></li>
             <li><span class="breadcrumb__link">></span></li>
-            <li><span class="breadcrumb__link">Account</span></li>
+            <li><span class="breadcrumb__link">Voucher</span></li>
         </ul>
     </section>
 
-    <!--============ ACCOUNTS  ==============-->
-    <section class="accounts section--lg">
-        <div class="accounts__container container grid">
-            <div class="account__tabs">
-                <p class="account__tab active-tab" data-target="#dashboard">
-                    <i class="fi fi-rs-settings-sliders"></i> Dashboards
-                </p>
-
-                <p class="account__tab" data-target="#orders">
-                    <i class="fi fi-rs-shopping-bag"></i> Orders
-                </p>
-
-                <p class="account__tab" data-target="#update-profile">
-                    <i class="fi fi-rs-user"></i> Update Profile
-                </p>
-
-                <p class="account__tab" data-target="#address">
-                    <i class="fi fi-rs-marker"></i> My Address
-                </p>
-
-                <p class="account__tab" data-target="#change-password">
-                    <i class="fi fi-rs-user"></i> Change Passwords
-                </p>
-
-                <p class="account__tab">
-                    <i class="fi fi-rs-exit"></i> Logout
-                </p>
-            </div>
-
-            <div class="tabs__content">
-                <div class="tab__content active-tab" content id="dashboard">
-                    <h3 class="tab__header">Hello Dian!</h3>
-
-                    <div class="tab__body">
-                        <p class="tab__description">
-                            From your account dashboard. You can easily check & view your
-                            recent orders, manage your shipping and billing addresses and
-                            edit your password and account details.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="tab__content" content id="orders">
-                    <h3 class="tab__header">Your Orders</h3>
-
-                    <div class="tab__body">
-                        <table class="placed__order-table">
-                            <tr>
-                                <th>Orders</th>
-                                <th>Dates</th>
-                                <th>Status</th>
-                                <th>Total</th>
-                                <th>Actions</th>
-                            </tr>
-
-                            <tr>
-                                <td>#2363</td>
-                                <td>March 12, 2024</td>
-                                <td>Processing</td>
-                                <td>Rp347.350,00</td>
-                                <td><a href="" class="view__order">View</a></td>
-                            </tr>
-
-                            <tr>
-                                <td>#2363</td>
-                                <td>March 12, 2024</td>
-                                <td>Processing</td>
-                                <td>Rp347.350,00</td>
-                                <td><a href="" class="view__order">View</a></td>
-                            </tr>
-
-                            <tr>
-                                <td>#2363</td>
-                                <td>March 12, 2024</td>
-                                <td>Processing</td>
-                                <td>Rp347.350,00</td>
-                                <td><a href="" class="view__order">View</a></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
-                <div class="tab__content" content id="update-profile">
-                    <h3 class="tab__header">Update Profile</h3>
-
-                    <div class="tab__body">
-                        <form action="" class="form grid">
-                            <input type="text" placeholder="Username" class="form__input">
-
-                            <div class="form__btn">
-                                <button>Save</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="tab__content" content id="address">
-                    <h3 class="tab__header">Shipping Address</h3>
-
-                    <div class="tab__body">
-                        <address class="address">
-                            Jl. Telekomunikasi, No 73. <br>
-                            Bandung, <br>
-                            Jawa Barat, <br>
-                            453661
-                        </address>
-                        <p class="city">Indonesia</p>
-                        <a href="" class="edit">Edit</a>
-                    </div>
-                </div>
-
-                <div class="tab__content" content id="change-password">
-                    <h3 class="tab__header">Change Password</h3>
-
-                    <div class="tab__body">
-                        <form action="" class="form grid">
-                            <input type="password" placeholder="Current Password" class="form__input">
-                            <input type="password" placeholder="New Password" class="form__input">
-                            <input type="password" placeholder="Confirm Password" class="form__input">
-
-                            <div class="form__btn">
-                                <button>Save</button>
-                            </div>
-                        </form>
-                    </div>
-
-                </div>
-
-            </div>
+    <!--============ ICON VOUCHER ==============-->
+    <div class="icon-container">
+        <div class="icon" data-target="#gratis-ongkir">
+            <img src="assets/img/Voucher/Gratong.png" alt="Gratis Ongkir">
+            <p>Gratis Ongkir</p>
         </div>
-    </section>
+        <div class="icon" data-target="#diskon-cashback">
+            <img src="assets/img/Voucher/Diskon.png" alt="Diskon & Cashback">
+            <p>Diskon & Cashback</p>
+        </div>
+        <div class="icon" data-target="#kirim-instant">
+            <img src="assets/img/Voucher/Kirim.png" alt="Kirim Instant">
+            <p>Kirim Instant</p>
+        </div>
+        <div class="icon" data-target="#flash-voucher">
+            <img src="assets/img/Voucher/Flash.png" alt="Flash Voucher">
+            <p>Flash Voucher</p>
+        </div>
+    </div>
 
-    <!--============ NEWSLETTER  ==============-->
+    <!--============ VOUCHER ==============-->
+    <main>
+        <div class="voucher-container">
+            <div id="gratis-ongkir" class="voucher-section">
+                <h2>Voucher Gratis Ongkir</h2>
+                <a href="shop.html" class="voucher-link">
+                    <img src="assets/img/Kupon/Gratong.png" alt="Voucher Gratis Ongkir" class="voucher-image">
+                </a>
+                <a href="shop.html" class="voucher-link">
+                    <img src="assets/img/Kupon/Gratong.png" alt="Voucher Gratis Ongkir" class="voucher-image">
+                </a>
+
+                <div id="diskon-cashback" class="voucher-section">
+                    <h2>Voucher Diskon & Cashback</h2>
+                    <a href="shop.html" class="voucher-link">
+                        <img src="assets/img/Kupon/voucher2.png" alt="Voucher Diskon & Cashback" class="voucher-image">
+                    </a>
+                    <a href="shop.html" class="voucher-link">
+                        <img src="assets/img/Kupon/voucher.png" alt="Voucher Diskon & Cashback" class="voucher-image">
+                    </a>
+
+                    <div id="kirim-instant" class="voucher-section">
+                        <h2>Kirim Instant</h2>
+                        <a href="shop.html" class="voucher-link">
+                            <img src="assets/img/Kupon/kirim instant.png" alt="Kirim Instant" class="voucher-image">
+                        </a>
+                        <a href="shop.html" class="voucher-link">
+                            <img src="assets/img/Kupon/kirim instant.png" alt="Kirim Instant" class="voucher-image">
+                        </a>
+
+                        <div id="flash-voucher" class="voucher-section">
+                            <h2>Flash Voucher</h2>
+                            <a href="shop.html" class="voucher-link">
+                                <img src="assets/img/Kupon/flashsale.png" alt="Flash Voucher" class="voucher-image">
+                            </a>
+                            <a href="shop.html" class="voucher-link">
+                                <img src="assets/img/Kupon/flashsale.png" alt="Flash Voucher" class="voucher-image">
+                            </a>
+                        </div>
+                    </div>
+    </main>
+
     <section class="newsletter section home__newsletter">
         <div class="newsletter__container container grid">
             <h3 class="newsletter__title flex">
@@ -257,8 +186,9 @@
         </div>
     </section>
 
-    <script src="assets/js/accounts.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
+
 
 <!--============ FOOTER ==============-->
 <footer class="footer__container">
@@ -346,6 +276,18 @@
         <p class="copyright">&copy; 2024 BabyWorld. All rights reserved </p>
         <span class="designer">Designed by DianNadineAkhtar</span>
     </div>
+    <script>
+        document.querySelectorAll('.icon').forEach(icon => {
+            icon.addEventListener('click', function() {
+                const target = document.querySelector(this.dataset.target);
+                window.scrollTo({
+                    top: target.offsetTop - document.querySelector('.icon-container').offsetHeight,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </footer>
+
 
 </html>
