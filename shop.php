@@ -198,7 +198,7 @@
           <div class="products_shop__container grid">
             <div class="product__item">
               <div class="product__banner">
-                <a href="details.html" class="product__images">
+                <a href="details.php" class="product__images">
                   <img src="assets/img/1.jpg" alt="" class="product__img default" />
 
                   <img src="assets/img/1.jpg" alt="" class="product__img hover" />
@@ -247,7 +247,7 @@
 
             <div class="product__item">
               <div class="product__banner">
-                <a href="details.html" class="product__images">
+                <a href="details.php" class="product__images">
                   <img src="assets/img/2.jpg" alt="" class="product__img default" />
 
                   <img src="assets/img/2.jpg" alt="" class="product__img hover" />
@@ -296,7 +296,7 @@
 
             <div class="product__item">
               <div class="product__banner">
-                <a href="details.html" class="product__images">
+                <a href="details.php" class="product__images">
                   <img src="assets/img/3.jpg" alt="" class="product__img default" />
 
                   <img src="assets/img/3.jpg" alt="" class="product__img hover" />
@@ -345,7 +345,7 @@
 
             <div class="product__item">
               <div class="product__banner">
-                <a href="details.html" class="product__images">
+                <a href="details.php" class="product__images">
                   <img src="assets/img/4.jpg" alt="" class="product__img default" />
 
                   <img src="assets/img/4.jpg" alt="" class="product__img hover" />
@@ -394,7 +394,7 @@
 
             <div class="product__item">
               <div class="product__banner">
-                <a href="details.html" class="product__images">
+                <a href="details.php" class="product__images">
                   <img src="assets/img/5.jpg" alt="" class="product__img default" />
 
                   <img src="assets/img/5.jpg" alt="" class="product__img hover" />
@@ -443,7 +443,7 @@
 
             <div class="product__item">
               <div class="product__banner">
-                <a href="details.html" class="product__images">
+                <a href="details.php" class="product__images">
                   <img src="assets/img/6.jpg" alt="" class="product__img default" />
 
                   <img src="assets/img/6.jpg" alt="" class="product__img hover" />
