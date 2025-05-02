@@ -1,17 +1,12 @@
 <?php
 session_start();
 
-// Jika user belum login, redirect ke halaman login-register
-if (!isset($_SESSION['id'], $_SESSION['name'], $_SESSION['role'])) {
-    header("Location: login-register.php");
-    exit;
+// Cek apakah sudah login dan role-nya admin
+if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'user') {
+    header("Location: ../login-register.php");
+    exit();
 }
-
-// Jika sudah login, ambil data session
-$name = $_SESSION['name'];
-$role = $_SESSION['role'];
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,9 +77,15 @@ $role = $_SESSION['role'];
                         <a href="contact.php" class="nav__link">Contact</a>
                     </li>
 
-                    <li class="nav__item">
-                        <a href="login-register.php" class="nav__link">Login</a>
-                    </li>
+                    <?php if (isset($_SESSION['id'])): ?>
+                        <li class="nav__item">
+                            <a href="logout.php" class="nav__link">Logout</a>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav__item">
+                            <a href="login-register.php" class="nav__link">Login</a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
 
                 <div class="header__search">
