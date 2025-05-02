@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+// Jika user belum login, redirect ke halaman login-register
+if (!isset($_SESSION['id'], $_SESSION['name'], $_SESSION['role'])) {
+    header("Location: login-register.php");
+    exit;
+}
+
+// Jika sudah login, ambil data session
+$name = $_SESSION['name'];
+$role = $_SESSION['role'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +46,11 @@
 
                 <div class="header__contact">
                     <span><a href="helpcenter.php"> Help Center</a></span>
-                    <span><a href="login-register.php"> Log In / Sign Up</a></span>
+                    <?php if (isset($_SESSION['id'])): ?>
+                        <span><a href="logout.php"> Logout</a></span>
+                    <?php else: ?>
+                        <span><a href="login-register.php"> Log In / Sign Up</a></span>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

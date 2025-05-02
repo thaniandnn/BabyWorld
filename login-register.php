@@ -1,48 +1,59 @@
 <?php
 session_start();
-include 'koneksi.php';
+include "configdb.php";
 
-// Jika tombol Sign Up ditekan
+// PROSES REGISTER
 if (isset($_POST['register'])) {
-    $name     = mysqli_real_escape_string($conn, $_POST['name']);
-    $email    = mysqli_real_escape_string($conn, $_POST['email']);
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $name     = $_POST['name'];
+    $email    = $_POST['email'];
+    $password = md5($_POST['password']);
+    $role     = 'user'; // default register sebagai user
+    $created  = date('Y-m-d H:i:s');
 
-    $check_email = mysqli_query($conn, "SELECT email FROM tb_user WHERE email='$email'");
-    if (mysqli_num_rows($check_email) > 0) {
-        $error = "Email sudah terdaftar!";
+    $check = mysqli_query($conn, "SELECT * FROM tb_user WHERE email='$email'");
+    if (mysqli_num_rows($check) > 0) {
+        echo "<script>alert('Email sudah terdaftar!');</script>";
     } else {
-        $insert = mysqli_query($conn, "INSERT INTO tb_user (name, email, password) VALUES ('$name', '$email', '$password')");
+        $insert = mysqli_query($conn, "INSERT INTO tb_user (name, email, password, role, created_at) 
+                                       VALUES ('$name', '$email', '$password', '$role', '$created')");
         if ($insert) {
-            $success = "Berhasil daftar! Silakan login.";
+            echo "<script>alert('Akun berhasil dibuat! Silakan login.');</script>";
         } else {
-            $error = "Gagal daftar, coba lagi.";
+            echo "<script>alert('Gagal membuat akun.');</script>";
         }
     }
 }
 
-// Jika tombol Sign In ditekan
+// PROSES LOGIN
 if (isset($_POST['login'])) {
-    $email    = mysqli_real_escape_string($conn, $_POST['email']);
-    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $email    = $_POST['email'];
+    $password = md5($_POST['password']);
 
     $query = mysqli_query($conn, "SELECT * FROM tb_user WHERE email='$email'");
-    if (mysqli_num_rows($query) == 1) {
-        $user = mysqli_fetch_assoc($query);
-        if (password_verify($password, $user['password'])) {
-            $_SESSION['login'] = true;
-            $_SESSION['name'] = $user['name'];
+    $user = mysqli_fetch_assoc($query);
+
+    if ($user) {
+        if ($password === $user['password']) {
             $_SESSION['email'] = $user['email'];
-            header('Location: index.php'); // arahkan ke halaman utama
-            exit;
+            $_SESSION['name']  = $user['name'];
+            $_SESSION['role']  = $user['role'];
+
+            // Arahkan berdasarkan role
+            if ($user['role'] === 'admin') {
+                header("Location: admin/dashboard.php");
+            } else {
+                header("Location: index.php");
+            }
+            exit();
         } else {
-            $error = "Password salah!";
+            echo "<script>alert('Password salah.');</script>";
         }
     } else {
-        $error = "Email tidak ditemukan!";
+        echo "<script>alert('Email tidak ditemukan.');</script>";
     }
 }
 ?>
+
 
 <html lang="en">
 
@@ -135,10 +146,10 @@ if (isset($_POST['login'])) {
         </nav>
     </header>
 
-    <!--============ LOGIN ==============-->
+    <!--============ LOGIN % REGISTER ==============-->
     <div class="login-container" id="login-container">
         <div class="form-container sign-up">
-            <form action="proses-register.php" method="POST">
+            <form method="POST">
                 <h1>Buat Akun</h1>
                 <div class="social-icons">
                     <a href="#" class="icon"><i class="fa-brands fa-google-plus-g" style="color: #F72D73;"></i></a>
@@ -154,7 +165,7 @@ if (isset($_POST['login'])) {
 
         </div>
         <div class="form-container sign-in">
-            <form action="proses-login.php" method="POST">
+            <form method="POST">
                 <h1>Sign In</h1>
                 <div class="social-icons">
                     <a href="#" class="icon"><i class="fa-brands fa-google-plus-g" style="color: #F72D73;"></i></a>
