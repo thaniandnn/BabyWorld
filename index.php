@@ -42,7 +42,7 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'user') {
                 <div class="header__contact">
                     <span><a href="helpcenter.php"> Help Center</a></span>
                     <?php if (isset($_SESSION['email'])): ?>
-                        <span><a href="logout.php" class="logout-link"> Logout</a></span>
+                        <span><a href="logout.php"> Logout</a></span>
                     <?php else: ?>
                         <span><a href="login-register.php"> Log In / Sign Up</a></span>
                     <?php endif; ?>

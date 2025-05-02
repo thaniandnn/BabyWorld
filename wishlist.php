@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+// Cek apakah sudah login dan role-nya admin
+if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'user') {
+    header("Location: ../login-register.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
