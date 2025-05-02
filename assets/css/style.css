@@ -273,6 +273,8 @@
     margin-right: 1rem;
 }
 
+
+
 .header__alert-news {
     color: var(--text-color-light);
     font-weight: var(--weight-600);
@@ -283,6 +285,10 @@
 
 .header__contact a,
 .header__alert-news a {
+    color: var(--text-color-light);
+    text-decoration: none;
+}
+.logout-link {
     color: var(--text-color-light);
     text-decoration: none;
 }

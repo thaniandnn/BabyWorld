@@ -41,8 +41,8 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'user') {
 
                 <div class="header__contact">
                     <span><a href="helpcenter.php"> Help Center</a></span>
-                    <?php if (isset($_SESSION['id'])): ?>
-                        <span><a href="logout.php"> Logout</a></span>
+                    <?php if (isset($_SESSION['email'])): ?>
+                        <span><a href="logout.php" class="logout-link"> Logout</a></span>
                     <?php else: ?>
                         <span><a href="login-register.php"> Log In / Sign Up</a></span>
                     <?php endif; ?>
@@ -72,19 +72,13 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'user') {
                     <li class="nav__item">
                         <a href="compare.php" class="nav__link">Compare</a>
                     </li>
-
                     <li class="nav__item">
                         <a href="contact.php" class="nav__link">Contact</a>
                     </li>
-
-                    <?php if (isset($_SESSION['id'])): ?>
-                        <li class="nav__item">
-                            <a href="logout.php" class="nav__link">Logout</a>
-                        </li>
+                    <?php if (isset($_SESSION['email'])): ?>
+                        <span><a href="logout.php"> Logout</a></span>
                     <?php else: ?>
-                        <li class="nav__item">
-                            <a href="login-register.php" class="nav__link">Login</a>
-                        </li>
+                        <span><a href="login-register.php"> Log In / Sign Up</a></span>
                     <?php endif; ?>
                 </ul>
 
