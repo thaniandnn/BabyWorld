@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+// Cek apakah sudah login dan role-nya admin
+if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'user') {
+    header("Location: ../login-register.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,6 +27,27 @@
 </head>
 
 <body>
+    <!--============ PHP ==============-->
+    <?php
+    // Pesan feedback dari URL
+    $success = $_GET['success'] ?? '';
+    $error = $_GET['error'] ?? '';
+    ?>
+
+    <?php if ($success): ?>
+        <div style="background-color: #d4edda; color: #155724; padding: 1rem; text-align: center; margin: 1rem auto; width: 90%; max-width: 600px; border-radius: 5px;">
+            ✅ Update berhasil!
+        </div>
+    <?php elseif ($error === 'wrong_password'): ?>
+        <div style="background-color: #f8d7da; color: #721c24; padding: 1rem; text-align: center; margin: 1rem auto; width: 90%; max-width: 600px; border-radius: 5px;">
+            ❌ Password lama salah. Silakan coba lagi.
+        </div>
+    <?php elseif ($error === 'confirm_mismatch'): ?>
+        <div style="background-color: #f8d7da; color: #721c24; padding: 1rem; text-align: center; margin: 1rem auto; width: 90%; max-width: 600px; border-radius: 5px;">
+            ❌ Konfirmasi password baru tidak cocok.
+        </div>
+    <?php endif; ?>
+
     <!--============ HEADER ==============-->
     <header class="header">
         <div class="header__top">
@@ -33,7 +63,11 @@
 
                 <div class="header__contact">
                     <span><a href="helpcenter.php"> Help Center</a></span>
-                    <span><a href="login-register.php"> Log In / Sign Up</a></span>
+                    <?php if (isset($_SESSION['email'])): ?>
+                        <span><a href="logout.php" class="logout-link"> Logout</a></span>
+                    <?php else: ?>
+                        <span><a href="login-register.php"> Log In / Sign Up</a></span>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -60,14 +94,14 @@
                     <li class="nav__item">
                         <a href="compare.php" class="nav__link">Compare</a>
                     </li>
-
                     <li class="nav__item">
                         <a href="contact.php" class="nav__link">Contact</a>
                     </li>
-
-                    <li class="nav__item">
-                        <a href="login-register.php" class="nav__link">Login</a>
-                    </li>
+                    <?php if (isset($_SESSION['email'])): ?>
+                        <span><a href="logout.php"> Logout</a></span>
+                    <?php else: ?>
+                        <span><a href="login-register.php"> Log In / Sign Up</a></span>
+                    <?php endif; ?>
                 </ul>
 
                 <div class="header__search">
@@ -192,13 +226,14 @@
                     <h3 class="tab__header">Update Profile</h3>
 
                     <div class="tab__body">
-                        <form action="" class="form grid">
-                            <input type="text" placeholder="Username" class="form__input">
-
+                        <form action="update_account.php" method="POST" class="form grid">
+                            <input type="hidden" name="action" value="update_profile">
+                            <input type="text" name="username" placeholder="Username" class="form__input">
                             <div class="form__btn">
-                                <button>Save</button>
+                                <button type="submit">Save</button>
                             </div>
                         </form>
+
                     </div>
                 </div>
 
@@ -206,14 +241,16 @@
                     <h3 class="tab__header">Shipping Address</h3>
 
                     <div class="tab__body">
-                        <address class="address">
-                            Jl. Telekomunikasi, No 73. <br>
-                            Bandung, <br>
-                            Jawa Barat, <br>
-                            453661
-                        </address>
-                        <p class="city">Indonesia</p>
-                        <a href="" class="edit">Edit</a>
+                        <form action="update_account.php" method="POST" class="form grid">
+                            <input type="hidden" name="action" value="update_address">
+
+                            <textarea name="address" class="form__input" rows="4" placeholder="Enter your shipping address">Jl. Telekomunikasi, No 73. Bandung, Jawa Barat, 453661, Indonesia</textarea>
+
+                            <div class="form__btn">
+                                <button type="submit">Save</button>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
 
@@ -221,17 +258,18 @@
                     <h3 class="tab__header">Change Password</h3>
 
                     <div class="tab__body">
-                        <form action="" class="form grid">
-                            <input type="password" placeholder="Current Password" class="form__input">
-                            <input type="password" placeholder="New Password" class="form__input">
-                            <input type="password" placeholder="Confirm Password" class="form__input">
+                        <form action="update_account.php" method="POST" class="form grid">
+                            <input type="hidden" name="action" value="change_password">
+
+                            <input type="password" name="current_password" placeholder="Current Password" class="form__input" required>
+                            <input type="password" name="new_password" placeholder="New Password" class="form__input" required>
+                            <input type="password" name="confirm_password" placeholder="Confirm Password" class="form__input" required>
 
                             <div class="form__btn">
-                                <button>Save</button>
+                                <button type="submit">Save</button>
                             </div>
                         </form>
                     </div>
-
                 </div>
 
             </div>
