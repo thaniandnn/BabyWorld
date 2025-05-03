@@ -1,7 +1,0 @@
-{
-    "livePreviewUseDevServer": true,
-    "livePreviewServerURL": "http://localhost/webpro",
-    "livePreviewServerProjectPath": "/",
-    "livePreviewHotReloadSupported": false,
-    "livePreviewFramework": "Custom"
-}
