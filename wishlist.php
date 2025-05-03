@@ -26,7 +26,7 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'user') {
 </head>
 
 <body>
-    <!--============ HEADER ==============-->
+   <!--============ HEADER ==============-->
     <header class="header">
         <div class="header__top">
             <div class="header__container container">
@@ -41,7 +41,11 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'user') {
 
                 <div class="header__contact">
                     <span><a href="helpcenter.php"> Help Center</a></span>
-                    <span><a href="login-register.php"> Log In / Sign Up</a></span>
+                    <?php if (isset($_SESSION['email'])): ?>
+                        <span><a href="logout.php"> Logout</a></span>
+                    <?php else: ?>
+                        <span><a href="login-register.php"> Log In / Sign Up</a></span>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -68,14 +72,17 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'user') {
                     <li class="nav__item">
                         <a href="compare.php" class="nav__link">Compare</a>
                     </li>
-
                     <li class="nav__item">
                         <a href="contact.php" class="nav__link">Contact</a>
                     </li>
-
                     <li class="nav__item">
-                        <a href="login-register.php" class="nav__link">Login</a>
+                        <?php if (isset($_SESSION['email'])): ?>
+                            <a href="logout.php" class="nav__link">Logout</a>
+                        <?php else: ?>
+                            <a href="login-register.php" class="nav__link">Login</a>
+                        <?php endif; ?>
                     </li>
+
                 </ul>
 
                 <div class="header__search">

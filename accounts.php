@@ -27,26 +27,7 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'user') {
 </head>
 
 <body>
-    <!--============ PHP ==============-->
-    <?php
-    // Pesan feedback dari URL
-    $success = $_GET['success'] ?? '';
-    $error = $_GET['error'] ?? '';
-    ?>
 
-    <?php if ($success): ?>
-        <div style="background-color: #d4edda; color: #155724; padding: 1rem; text-align: center; margin: 1rem auto; width: 90%; max-width: 600px; border-radius: 5px;">
-            ✅ Update berhasil!
-        </div>
-    <?php elseif ($error === 'wrong_password'): ?>
-        <div style="background-color: #f8d7da; color: #721c24; padding: 1rem; text-align: center; margin: 1rem auto; width: 90%; max-width: 600px; border-radius: 5px;">
-            ❌ Password lama salah. Silakan coba lagi.
-        </div>
-    <?php elseif ($error === 'confirm_mismatch'): ?>
-        <div style="background-color: #f8d7da; color: #721c24; padding: 1rem; text-align: center; margin: 1rem auto; width: 90%; max-width: 600px; border-radius: 5px;">
-            ❌ Konfirmasi password baru tidak cocok.
-        </div>
-    <?php endif; ?>
 
     <!--============ HEADER ==============-->
     <header class="header">
@@ -71,6 +52,27 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'user') {
                 </div>
             </div>
         </div>
+
+        <!--============ PHP ==============-->
+        <?php
+        // Pesan feedback dari URL
+        $success = $_GET['success'] ?? '';
+        $error = $_GET['error'] ?? '';
+        ?>
+
+        <?php if ($success): ?>
+            <div style="background-color: #d4edda; color: #155724; padding: 1rem; text-align: center; margin: 1rem auto; width: 90%; max-width: 600px; border-radius: 5px;">
+                ✅ Update berhasil!
+            </div>
+        <?php elseif ($error === 'wrong_password'): ?>
+            <div style="background-color: #f8d7da; color: #721c24; padding: 1rem; text-align: center; margin: 1rem auto; width: 90%; max-width: 600px; border-radius: 5px;">
+                ❌ Password lama salah. Silakan coba lagi.
+            </div>
+        <?php elseif ($error === 'confirm_mismatch'): ?>
+            <div style="background-color: #f8d7da; color: #721c24; padding: 1rem; text-align: center; margin: 1rem auto; width: 90%; max-width: 600px; border-radius: 5px;">
+                ❌ Konfirmasi password baru tidak cocok.
+            </div>
+        <?php endif; ?>
 
         <nav class="nav container">
             <a href="index.php" class="nav__logo">
@@ -132,6 +134,7 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'user') {
                 </a>
             </div>
         </nav>
+
     </header>
 
     <!--============ BREADCRUMP ==============-->
