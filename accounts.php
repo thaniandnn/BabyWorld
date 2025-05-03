@@ -64,7 +64,7 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'user') {
                 <div class="header__contact">
                     <span><a href="helpcenter.php"> Help Center</a></span>
                     <?php if (isset($_SESSION['email'])): ?>
-                        <span><a href="logout.php" class="logout-link"> Logout</a></span>
+                        <span><a href="logout.php"> Logout</a></span>
                     <?php else: ?>
                         <span><a href="login-register.php"> Log In / Sign Up</a></span>
                     <?php endif; ?>
@@ -97,11 +97,14 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'user') {
                     <li class="nav__item">
                         <a href="contact.php" class="nav__link">Contact</a>
                     </li>
-                    <?php if (isset($_SESSION['email'])): ?>
-                        <span><a href="logout.php"> Logout</a></span>
-                    <?php else: ?>
-                        <span><a href="login-register.php"> Log In / Sign Up</a></span>
-                    <?php endif; ?>
+                    <li class="nav__item">
+                        <?php if (isset($_SESSION['email'])): ?>
+                            <a href="logout.php" class="nav__link">Logout</a>
+                        <?php else: ?>
+                            <a href="login-register.php" class="nav__link">Login</a>
+                        <?php endif; ?>
+                    </li>
+
                 </ul>
 
                 <div class="header__search">
@@ -164,9 +167,10 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'user') {
                     <i class="fi fi-rs-user"></i> Change Passwords
                 </p>
 
-                <p class="account__tab">
+                <a href="logout.php" class="account__tab">
                     <i class="fi fi-rs-exit"></i> Logout
-                </p>
+                </a>
+
             </div>
 
             <div class="tabs__content">

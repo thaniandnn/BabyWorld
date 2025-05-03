@@ -97,11 +97,14 @@ if (isset($_POST['login'])) {
                     <li class="nav__item">
                         <a href="contact.php" class="nav__link">Contact</a>
                     </li>
-                    <?php if (isset($_SESSION['email'])): ?>
-                        <span><a href="logout.php"> Logout</a></span>
-                    <?php else: ?>
-                        <span><a href="login-register.php"> Login</a></span>
-                    <?php endif; ?>
+                    <li class="nav__item">
+                        <?php if (isset($_SESSION['email'])): ?>
+                            <a href="logout.php" class="nav__link">Logout</a>
+                        <?php else: ?>
+                            <a href="login-register.php" class="nav__link">Login</a>
+                        <?php endif; ?>
+                    </li>
+
                 </ul>
 
                 <div class="header__search">
