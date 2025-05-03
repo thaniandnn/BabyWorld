@@ -1,12 +1,34 @@
 <?php
 session_start();
+include "configdb.php";
 
-// Cek apakah sudah login dan role-nya admin
-if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'user') {
-    header("Location: ../login-register.php");
-    exit();
+// Proses login
+if (isset($_POST['login'])) {
+    $email    = $_POST['email'];
+    $password = md5($_POST['password']);
+
+    $query = mysqli_query($conn, "SELECT * FROM tb_user WHERE email='$email'");
+    $user = mysqli_fetch_assoc($query);
+
+    if ($user && $password === $user['password']) {
+        $_SESSION['email'] = $user['email'];
+        $_SESSION['name']  = $user['name'];
+        $_SESSION['role']  = $user['role'];
+        $_SESSION['status_login'] = true;
+
+        // Arahkan ke dashboard admin atau homepage user
+        if ($user['role'] === 'admin') {
+            header("Location: /webpro2025/BbyWorld/admin/admin_babyworld/pages/dashboard.php");
+        } else {
+            header("Location: /webpro2025/BbyWorld/index.php");
+        }
+        exit();
+    } else {
+        echo "<script>alert('Email atau password salah.');</script>";
+    }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,7 +100,7 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'user') {
                     <?php if (isset($_SESSION['email'])): ?>
                         <span><a href="logout.php"> Logout</a></span>
                     <?php else: ?>
-                        <span><a href="login-register.php"> Log In / Sign Up</a></span>
+                        <span><a href="login-register.php"> Login</a></span>
                     <?php endif; ?>
                 </ul>
 
