@@ -37,10 +37,11 @@ if (isset($_POST['login'])) {
             $_SESSION['email'] = $user['email'];
             $_SESSION['name']  = $user['name'];
             $_SESSION['role']  = $user['role'];
+            $_SESSION['status_login'] = true; 
 
             // Arahkan berdasarkan role
             if ($user['role'] === 'admin') {
-                header("Location: /webpro2025/BbyWorld/admin/dashboard.php");
+                header("Location: /webpro2025/BbyWorld/admin/admin_babyworld/pages/dashboard.php");
             } else {
                 header("Location: index.php");
             }
