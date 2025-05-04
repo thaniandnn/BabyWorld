@@ -1,3 +1,24 @@
+<?php
+// Koneksi ke database
+include('configdb.php');
+
+// Ambil data produk dari database
+$query = "SELECT * FROM tb_produk";
+$result = mysqli_query($conn, $query);
+
+if (mysqli_num_rows($result) > 0) {
+    while ($product = mysqli_fetch_assoc($result)) {
+        $product_id = $product['id_produk']; // ID produk
+        $product_name = $product['nama_produk']; // Nama produk
+        $product_desc = $product['deskripsi']; // Deskripsi produk
+        $product_price = $product['harga']; // Harga produk
+        $product_stock = $product['stok']; // Stok produk
+        $product_image = $product['foto']; // Foto produk
+    }
+} else {
+    echo "No products found.";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -119,191 +140,150 @@
     </section>
 
     <!--- PRODUCT FEATURED -->
-
-    <div class="product-featured">
-        <div class="showcase">
-
-            <div class="details-container">
-                <img src="assets/img/shop/bottom2.jpg" class="main-image" height="400" width="300" />
-                <div class="thumbnail-container">
-                    <img src="assets/img/shop/dp1.jpeg" class="thumbnail" height="100" width="80" />
-                    <img src="assets/img/shop/dp1.jpeg" class="thumbnail" height="100" width="80" />
-                    <img src="assets/img/shop/dp1.jpeg" class="thumbnail" height="100" width="80" />
-                </div>
-            </div>
-</body>
-
-</html>
-
-<div class="showcase-content">
-
-    <h2 class="showcase-title">Colorful Pattern Shirt</h2>
-    <div class="showcase-rating">
-        <ion-icon name="star"></ion-icon>
-        <ion-icon name="star"></ion-icon>
-        <ion-icon name="star"></ion-icon>
-        <ion-icon name="star-outline"></ion-icon>
-        <ion-icon name="star-outline"></ion-icon>
-    </div>
-    <h3 class="showcase-title">Character Poplin</h3>
-
-    <p class="showcase-desc">
-        Karakter hewan berwarna-warni ini siap untuk musim panas, bukan?
-        Terbuat dari katun poplin, celana pendek ini ringan namun cukup kuat untuk menemani setiap petualangan.
-        Dengan ikat pinggang elastis sehingga mudah ditarik, Anda akan siap menghadapi hari cerah dalam waktu singkat.
-    </p>
-
-    <div class="price-box">
-        <p class="price">Rp 269.00</p>
-        <del>Rp 299.000</del>
-    </div>
-
-    <button class="add-cart-btn">add to cart</button>
-
-    <div class="size-options">
-        <div>
-            <button class="add-cart-btn">M</button>
-            <button class="add-cart-btn">L</button>
-            <button class="add-cart-btn">X</button>
-            <button class="add-cart-btn">XXL</button>
+    <section class="product-detail">
+        <div class="product-images">
+            <img src="../assets/foto_produk/<?php echo $product_image; ?>" alt="<?php echo $product_name; ?>" class="main-image" />
         </div>
+        <div class="product-info">
+            <h2><?php echo $product_name; ?></h2>
+            <p><?php echo $product_desc; ?></p>
+            <p>Price: Rp<?php echo number_format($product_price, 0, ',', '.'); ?></p>
+            <p>Stock: <?php echo $product_stock; ?> items available</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    </section>
+
+    <div class="product-description">
+        <h3>Description Product: </h3>
+        <ul>
+            <li>Cotton for comfort</li>
+            <li>Wide, elasticated waistband</li>
+            <li>Drawcord for a secure fit (cord is fixed at the back to prevent it being pulled all the way through)</li>
+            <li>Pockets</li>
+            <li>Roll-up hems</li>
+        </ul>
+        <p><strong>SNI:</strong> 2-135-135-230854-1</p>
     </div>
-</div>
-</div>
-</div>
-</div>
-</div>
 
-<div class="product-description">
-    <h3>Description Product: </h3>
-    <ul>
-        <li>Cotton for comfort</li>
-        <li>Wide, elasticated waistband</li>
-        <li>Drawcord for a secure fit (cord is fixed at the back to prevent it being pulled all the way through)</li>
-        <li>Pockets</li>
-        <li>Roll-up hems</li>
-    </ul>
-    <p><strong>SNI:</strong> 2-135-135-230854-1</p>
-</div>
 
-<!--============ NEWSLETTER  ==============-->
-<section class="newsletter section home__newsletter">
-    <div class="newsletter__container container grid">
-        <h3 class="newsletter__title flex">
-            <img src="assets/svg/mailbox-flag-up.svg" alt="" class="newsletter__icon">
-            Sign Up to Newsletter
-        </h3>
+    <!--============ NEWSLETTER  ==============-->
+    <section class="newsletter section home__newsletter">
+        <div class="newsletter__container container grid">
+            <h3 class="newsletter__title flex">
+                <img src="assets/svg/mailbox-flag-up.svg" alt="" class="newsletter__icon">
+                Sign Up to Newsletter
+            </h3>
 
-        <p class="newsletter__description">
-            ...and receive Rp100.000 coupon for first shopping.
-        </p>
+            <p class="newsletter__description">
+                ...and receive Rp100.000 coupon for first shopping.
+            </p>
 
-        <form action="" class="newsletter__form">
-            <input type="text" placeholder="Enter your Email" class="newsletter__input">
-            <button type="submit" class="newsletter__btn">Subscribe</button>
-        </form>
-    </div>
-</section>
+            <form action="" class="newsletter__form">
+                <input type="text" placeholder="Enter your Email" class="newsletter__input">
+                <button type="submit" class="newsletter__btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
 
-<!--
+    <!--
     - custom js link
   -->
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
-<!--============ FOOTER ==============-->
-<footer class="footer__container">
-    <div class="footer__container grid">
-        <div class="footer__content">
-            <a href="index.html" class="footer__logo">
-                <img src="assets/img/feelin'.png" alt="" class="footer__logo-img">
-            </a>
+    <!--============ FOOTER ==============-->
+    <footer class="footer__container">
+        <div class="footer__container grid">
+            <div class="footer__content">
+                <a href="index.html" class="footer__logo">
+                    <img src="assets/img/feelin'.png" alt="" class="footer__logo-img">
+                </a>
 
-            <h4 class="footer__subtitle">Contact</h4>
+                <h4 class="footer__subtitle">Contact</h4>
 
-            <p class="footer__description">
-                <span>Address:</span> Jl. Telekomunikasi, No 73, Bandung, Jawa Barat.
-            </p>
+                <p class="footer__description">
+                    <span>Address:</span> Jl. Telekomunikasi, No 73, Bandung, Jawa Barat.
+                </p>
 
-            <p class="footer__description">
-                <span>Phone:</span> +62 856 9712 0151 / (+62) 897 4395 313
-            </p>
+                <p class="footer__description">
+                    <span>Phone:</span> +62 856 9712 0151 / (+62) 897 4395 313
+                </p>
 
-            <p class="footer__description">
-                <span>Hours:</span> 10:00 - 18:00, Mon - Sat
-            </p>
+                <p class="footer__description">
+                    <span>Hours:</span> 10:00 - 18:00, Mon - Sat
+                </p>
 
-            <div class="footer__social">
-                <h4 class="footer__subtitle">Follow Us</h4>
+                <div class="footer__social">
+                    <h4 class="footer__subtitle">Follow Us</h4>
 
-                <div class="footer__social-links">
-                    <a href="">
-                        <img src="assets/svg/facebook.svg" alt="" class="footer__social-icon">
-                    </a>
+                    <div class="footer__social-links">
+                        <a href="">
+                            <img src="assets/svg/facebook.svg" alt="" class="footer__social-icon">
+                        </a>
 
-                    <a href="">
-                        <img src="assets/svg/instagram.svg" alt="" class="footer__social-icon">
-                    </a>
+                        <a href="">
+                            <img src="assets/svg/instagram.svg" alt="" class="footer__social-icon">
+                        </a>
 
-                    <a href="">
-                        <img src="assets/svg/pinterest.svg" alt="" class="footer__social-icon">
-                    </a>
+                        <a href="">
+                            <img src="assets/svg/pinterest.svg" alt="" class="footer__social-icon">
+                        </a>
 
-                    <a href="">
-                        <img src="assets/svg/youtube.svg" alt="" class="footer__social-icon">
-                    </a>
+                        <a href="">
+                            <img src="assets/svg/youtube.svg" alt="" class="footer__social-icon">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__content">
+                <h3 class="footer__title">Address</h3>
+
+                <ul class="footer__links">
+                    <li><a href="" class="footer__link">About Us</a></li>
+                    <li><a href="" class="footer__link">Delivery Information</a></li>
+                    <li><a href="" class="footer__link">Privacy Policy</a></li>
+                    <li><a href="" class="footer__link">Terms & Conditions</a></li>
+                    <li><a href="" class="footer__link">Contact Us</a></li>
+                    <li><a href="" class="footer__link">Support Center</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__content">
+                <h3 class="footer__title">My Account</h3>
+
+                <ul class="footer__links">
+                    <li><a href="" class="footer__link">Sign In</a></li>
+                    <li><a href="" class="footer__link">View Cart</a></li>
+                    <li><a href="" class="footer__link">My Wishlist</a></li>
+                    <li><a href="" class="footer__link">Track My Order</a></li>
+                    <li><a href="" class="footer__link">Help</a></li>
+                    <li><a href="" class="footer__link">Order</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__content">
+                <h3 class="footer__title">Secured Payment Gateways</h3>
+                <div class="footer__contents">
+                    <img src="assets/img/card.png" alt="" class="payment__img">
+                    <img src="assets/img/visa.png" alt="" class="payment__img">
+                    <img src="assets/img/paypal.png" alt="" class="payment__img">
+                    <img src="assets/img/jcb.png" alt="" class="payment__img">
                 </div>
             </div>
         </div>
 
-        <div class="footer__content">
-            <h3 class="footer__title">Address</h3>
-
-            <ul class="footer__links">
-                <li><a href="" class="footer__link">About Us</a></li>
-                <li><a href="" class="footer__link">Delivery Information</a></li>
-                <li><a href="" class="footer__link">Privacy Policy</a></li>
-                <li><a href="" class="footer__link">Terms & Conditions</a></li>
-                <li><a href="" class="footer__link">Contact Us</a></li>
-                <li><a href="" class="footer__link">Support Center</a></li>
-            </ul>
+        <div class="footer__bottom">
+            <p class="copyright">&copy; 2024 BabyWorld. All rights reserved </p>
+            <span class="designer">Designed by DianNadineAkhtar</span>
         </div>
-
-        <div class="footer__content">
-            <h3 class="footer__title">My Account</h3>
-
-            <ul class="footer__links">
-                <li><a href="" class="footer__link">Sign In</a></li>
-                <li><a href="" class="footer__link">View Cart</a></li>
-                <li><a href="" class="footer__link">My Wishlist</a></li>
-                <li><a href="" class="footer__link">Track My Order</a></li>
-                <li><a href="" class="footer__link">Help</a></li>
-                <li><a href="" class="footer__link">Order</a></li>
-            </ul>
-        </div>
-
-        <div class="footer__content">
-            <h3 class="footer__title">Secured Payment Gateways</h3>
-            <div class="footer__contents">
-                <img src="assets/img/card.png" alt="" class="payment__img">
-                <img src="assets/img/visa.png" alt="" class="payment__img">
-                <img src="assets/img/paypal.png" alt="" class="payment__img">
-                <img src="assets/img/jcb.png" alt="" class="payment__img">
-            </div>
-        </div>
-    </div>
-
-    <div class="footer__bottom">
-        <p class="copyright">&copy; 2024 BabyWorld. All rights reserved </p>
-        <span class="designer">Designed by DianNadineAkhtar</span>
-    </div>
-</footer>
+    </footer>
 
 
-<!--
+    <!--
     - ionicon link
   -->
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </body>
 

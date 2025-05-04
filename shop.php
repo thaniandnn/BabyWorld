@@ -1,3 +1,29 @@
+<?php
+include('configdb.php');
+
+$search = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
+$kategori = isset($_GET['kategori']) ? mysqli_real_escape_string($conn, $_GET['kategori']) : '';
+
+// Menambahkan kondisi kategori dalam query
+$query = "SELECT * FROM tb_produk WHERE 1";
+
+if ($search) {
+  $query .= " AND (nama_produk LIKE '%$search%' OR kategori LIKE '%$search%' OR deskripsi LIKE '%$search%')";
+}
+
+if ($kategori) {
+  $query .= " AND kategori = '$kategori'";
+}
+
+$result = mysqli_query($conn, $query);
+
+$products = [];
+if (mysqli_num_rows($result) > 0) {
+  while ($product = mysqli_fetch_assoc($result)) {
+    $products[] = $product;
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -96,14 +122,12 @@
     </nav>
   </header>
 
-
-
   <!--============ BREADCRUMP ==============-->
   <section class="breadcrumb">
     <ul class="breadcrumb__list flex container">
       <li><a href="index.php" class="breadcrumb__link">Home</a></li>
       <li><span class="breadcrumb__link">></span></li>
-      <li><span class="breadcrumb__link">Shop</span></li>
+      <li><a href="shop.php" class="breadcrumb__link">Shop</a></li>
     </ul>
   </section>
 
@@ -114,25 +138,36 @@
         <div class="sidebar-top">
           <h3 class="sidebar-title">Category</h3>
         </div>
-
         <ul class="sidebar-menu-category-list">
           <li class="sidebar-menu-category">
-            <label class="menu-title-flex"><input type="checkbox" /> Accessories</label>
+            <label class="<?= ($kategori == 'Accessories') ? 'active' : '' ?>">
+              <input type="checkbox" <?= ($kategori == 'Accessories') ? 'checked' : '' ?> onclick="window.location.href='shop.php?kategori=Accessories';" /> Accessories
+            </label>
           </li>
           <li class="sidebar-menu-category">
-            <label class="menu-title-flex"><input type="checkbox" /> Bottoms</label>
+            <label class="<?= ($kategori == 'Bottoms') ? 'active' : '' ?>">
+              <input type="checkbox" <?= ($kategori == 'Bottoms') ? 'checked' : '' ?> onclick="window.location.href='shop.php?kategori=Bottoms';" /> Bottoms
+            </label>
           </li>
           <li class="sidebar-menu-category">
-            <label class="menu-title-flex"><input type="checkbox" /> Denim</label>
+            <label class="<?= ($kategori == 'Denim') ? 'active' : '' ?>">
+              <input type="checkbox" <?= ($kategori == 'Denim') ? 'checked' : '' ?> onclick="window.location.href='shop.php?kategori=Denim';" /> Denim
+            </label>
           </li>
           <li class="sidebar-menu-category">
-            <label class="menu-title-flex"><input type="checkbox" /> Leggings</label>
+            <label class="<?= ($kategori == 'Leggings') ? 'active' : '' ?>">
+              <input type="checkbox" <?= ($kategori == 'Leggings') ? 'checked' : '' ?> onclick="window.location.href='shop.php?kategori=Leggings';" /> Leggings
+            </label>
           </li>
           <li class="sidebar-menu-category">
-            <label class="menu-title-flex"><input type="checkbox" /> Short</label>
+            <label class="<?= ($kategori == 'Short') ? 'active' : '' ?>">
+              <input type="checkbox" <?= ($kategori == 'Short') ? 'checked' : '' ?> onclick="window.location.href='shop.php?kategori=Short';" /> Short
+            </label>
           </li>
           <li class="sidebar-menu-category">
-            <label class="menu-title-flex"><input type="checkbox" /> Sets</label>
+            <label class="<?= ($kategori == 'Sets') ? 'active' : '' ?>">
+              <input type="checkbox" <?= ($kategori == 'Sets') ? 'checked' : '' ?> onclick="window.location.href='shop.php?kategori=Sets';" /> Sets
+            </label>
           </li>
         </ul>
       </div>
@@ -196,1192 +231,66 @@
       <div class="tab__items">
         <div class="tab__item active-tab" content id="featured">
           <div class="products_shop__container grid">
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="details.php" class="product__images">
-                  <img src="assets/img/1.jpg" alt="" class="product__img default" />
-
-                  <img src="assets/img/1.jpg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rs-eye"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                    <i class="fi fi-rs-heart"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rs-shuffle"></i>
-                  </a>
-                </div>
-
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="details.html">
-                  <h3 class="product__title">Ice Cream Shirt</h3>
-                </a>
-                <div class="product__rating">
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                </div>
-
-                <div class="product__price flex">
-                  <span class="new__price">Rp238.000</span>
-                  <span class="old__price">Rp138.000</span>
-                </div>
-
-                <a href="#" class="action__btn cart__btn" aria-label="Add to Cart">
-                  <i class="fi fi-rs-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="details.php" class="product__images">
-                  <img src="assets/img/2.jpg" alt="" class="product__img default" />
-
-                  <img src="assets/img/2.jpg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rs-eye"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                    <i class="fi fi-rs-heart"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rs-shuffle"></i>
-                  </a>
-                </div>
-
-                <div class="product__badge light-green">Hot</div>
-              </div>
-
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="details.html">
-                  <h3 class="product__title">Circle Shirt</h3>
-                </a>
-                <div class="product__rating">
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                </div>
-
-                <div class="product__price flex">
-                  <span class="new__price">Rp138.000</span>
-                  <span class="old__price">Rp88.000</span>
-                </div>
-
-                <a href="#" class="action__btn cart__btn" aria-label="Add to Cart">
-                  <i class="fi fi-rs-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="details.php" class="product__images">
-                  <img src="assets/img/3.jpg" alt="" class="product__img default" />
-
-                  <img src="assets/img/3.jpg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rs-eye"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                    <i class="fi fi-rs-heart"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rs-shuffle"></i>
-                  </a>
-                </div>
-
-                <div class="product__badge light-orange">Hot</div>
-              </div>
-
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="details.html">
-                  <h3 class="product__title">Bundle Baby Shirt</h3>
-                </a>
-                <div class="product__rating">
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                </div>
-
-                <div class="product__price flex">
-                  <span class="new__price">Rp250.000</span>
-                  <span class="old__price">Rp150.000</span>
-                </div>
-
-                <a href="#" class="action__btn cart__btn" aria-label="Add to Cart">
-                  <i class="fi fi-rs-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="details.php" class="product__images">
-                  <img src="assets/img/4.jpg" alt="" class="product__img default" />
-
-                  <img src="assets/img/4.jpg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rs-eye"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                    <i class="fi fi-rs-heart"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rs-shuffle"></i>
-                  </a>
-                </div>
-
-                <div class="product__badge light-blue">Hot</div>
-              </div>
-
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="details.html">
-                  <h3 class="product__title">Buy 2 Get 1</h3>
-                </a>
-                <div class="product__rating">
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                </div>
-
-                <div class="product__price flex">
-                  <span class="new__price">Rp300.000</span>
-                  <span class="old__price">Rp200.000</span>
-                </div>
-
-                <a href="#" class="action__btn cart__btn" aria-label="Add to Cart">
-                  <i class="fi fi-rs-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="details.php" class="product__images">
-                  <img src="assets/img/5.jpg" alt="" class="product__img default" />
-
-                  <img src="assets/img/5.jpg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rs-eye"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                    <i class="fi fi-rs-heart"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rs-shuffle"></i>
-                  </a>
-                </div>
-
-                <div class="product__badge light-orange">-30%</div>
-              </div>
-
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="details.html">
-                  <h3 class="product__title">Green Jumper</h3>
-                </a>
-                <div class="product__rating">
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                </div>
-
-                <div class="product__price flex">
-                  <span class="new__price">Rp188.000</span>
-                  <span class="old__price">Rp138.000</span>
-                </div>
-
-                <a href="#" class="action__btn cart__btn" aria-label="Add to Cart">
-                  <i class="fi fi-rs-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="details.php" class="product__images">
-                  <img src="assets/img/6.jpg" alt="" class="product__img default" />
-
-                  <img src="assets/img/6.jpg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rs-eye"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                    <i class="fi fi-rs-heart"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rs-shuffle"></i>
-                  </a>
-                </div>
-
-                <div class="product__badge light-pink">-22%</div>
-              </div>
-
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="details.html">
-                  <h3 class="product__title">Buy 1 Get 1 Jumper</h3>
-                </a>
-                <div class="product__rating">
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                </div>
-
-                <div class="product__price flex">
-                  <span class="new__price">Rp245.000</span>
-                  <span class="old__price">Rp145.000</span>
-                </div>
-
-                <a href="#" class="action__btn cart__btn" aria-label="Add to Cart">
-                  <i class="fi fi-rs-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="details.html" class="product__images">
-                  <img src="assets/img/7.jpg" alt="" class="product__img default" />
-
-                  <img src="assets/img/7.jpg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rs-eye"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                    <i class="fi fi-rs-heart"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rs-shuffle"></i>
-                  </a>
-                </div>
-
-                <div class="product__badge light-pink">-22%</div>
-              </div>
-
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="details.html">
-                  <h3 class="product__title">Bear Jumper</h3>
-                </a>
-                <div class="product__rating">
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                </div>
-
-                <div class="product__price flex">
-                  <span class="new__price">Rp100.000</span>
-                  <span class="old__price">Rp75.000</span>
-                </div>
-
-                <a href="#" class="action__btn cart__btn" aria-label="Add to Cart">
-                  <i class="fi fi-rs-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="details.html" class="product__images">
-                  <img src="assets/img/8.jpg" alt="" class="product__img default" />
-
-                  <img src="assets/img/8.jpg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rs-eye"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                    <i class="fi fi-rs-heart"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rs-shuffle"></i>
-                  </a>
-                </div>
-
-              </div>
-
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="details.html">
-                  <h3 class="product__title">Bear Jumper</h3>
-                </a>
-                <div class="product__rating">
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                </div>
-
-                <div class="product__price flex">
-                  <span class="new__price">Rp238.000</span>
-                  <span class="old__price">Rp138.000</span>
-                </div>
-
-                <a href="#" class="action__btn cart__btn" aria-label="Add to Cart">
-                  <i class="fi fi-rs-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="tab__item" content id="popular">
-          <div class="products__container grid">
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="details.html" class="product__images">
-                  <img src="assets/img/10.jpg" alt="" class="product__img default" />
-
-                  <img src="assets/img/10.jpg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rs-eye"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                    <i class="fi fi-rs-heart"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rs-shuffle"></i>
-                  </a>
-                </div>
-
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="details.html">
-                  <h3 class="product__title">Colorful Pattern Shirt</h3>
-                </a>
-                <div class="product__rating">
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                </div>
-
-                <div class="product__price flex">
-                  <span class="new__price">Rp238.000</span>
-                  <span class="old__price">Rp138.000</span>
-                </div>
-
-                <a href="#" class="action__btn cart__btn" aria-label="Add to Cart">
-                  <i class="fi fi-rs-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="details.html" class="product__images">
-                  <img src="assets/img/9.jpg" alt="" class="product__img default" />
-
-                  <img src="assets/img/9.jpg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rs-eye"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                    <i class="fi fi-rs-heart"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rs-shuffle"></i>
-                  </a>
-                </div>
-
-                <div class="product__badge light-green">Hot</div>
-              </div>
-
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="details.html">
-                  <h3 class="product__title">Elephant Shirt</h3>
-                </a>
-                <div class="product__rating">
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                </div>
-
-                <div class="product__price flex">
-                  <span class="new__price">Rp138.000</span>
-                  <span class="old__price">Rp100.000</span>
-                </div>
-
-                <a href="#" class="action__btn cart__btn" aria-label="Add to Cart">
-                  <i class="fi fi-rs-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="details.html" class="product__images">
-                  <img src="assets/img/8.jpg" alt="" class="product__img default" />
-
-                  <img src="assets/img/8.jpg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rs-eye"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                    <i class="fi fi-rs-heart"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rs-shuffle"></i>
-                  </a>
-                </div>
-
-                <div class="product__badge light-orange">Hot</div>
-              </div>
-
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="details.html">
-                  <h3 class="product__title">Bear Pattern Shirt</h3>
-                </a>
-                <div class="product__rating">
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                </div>
-
-                <div class="product__price flex">
-                  <span class="new__price">Rp100.000</span>
-                  <span class="old__price">Rp85.000</span>
-                </div>
-
-                <a href="#" class="action__btn cart__btn" aria-label="Add to Cart">
-                  <i class="fi fi-rs-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="details.html" class="product__images">
-                  <img src="assets/img/7.jpg" alt="" class="product__img default" />
-
-                  <img src="assets/img/7.jpg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rs-eye"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                    <i class="fi fi-rs-heart"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rs-shuffle"></i>
-                  </a>
-                </div>
-
-                <div class="product__badge light-blue">Hot</div>
-              </div>
-
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="details.html">
-                  <h3 class="product__title">Bear Shirt</h3>
-                </a>
-                <div class="product__rating">
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                </div>
-
-                <div class="product__price flex">
-                  <span class="new__price">Rp85.000</span>
-                  <span class="old__price">Rp50.000</span>
-                </div>
-
-                <a href="#" class="action__btn cart__btn" aria-label="Add to Cart">
-                  <i class="fi fi-rs-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="details.html" class="product__images">
-                  <img src="assets/img/6.jpg" alt="" class="product__img default" />
-
-                  <img src="assets/img/6.jpg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rs-eye"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                    <i class="fi fi-rs-heart"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rs-shuffle"></i>
-                  </a>
-                </div>
-
-                <div class="product__badge light-green">-30%</div>
-              </div>
-
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="details.html">
-                  <h3 class="product__title">Buy 1 Get 1</h3>
-                </a>
-                <div class="product__rating">
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                </div>
-
-                <div class="product__price flex">
-                  <span class="new__price">Rp238.000</span>
-                  <span class="old__price">Rp138.000</span>
-                </div>
-
-                <a href="#" class="action__btn cart__btn" aria-label="Add to Cart">
-                  <i class="fi fi-rs-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="details.html" class="product__images">
-                  <img src="assets/img/5.jpg" alt="" class="product__img default" />
-
-                  <img src="assets/img/5.jpg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rs-eye"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                    <i class="fi fi-rs-heart"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rs-shuffle"></i>
-                  </a>
-                </div>
-
-                <div class="product__badge light-green">-22%</div>
-              </div>
-
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="details.html">
-                  <h3 class="product__title">Green Shirt</h3>
-                </a>
-                <div class="product__rating">
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                </div>
-
-                <div class="product__price flex">
-                  <span class="new__price">Rp138.000</span>
-                  <span class="old__price">Rp115.000</span>
-                </div>
-
-                <a href="#" class="action__btn cart__btn" aria-label="Add to Cart">
-                  <i class="fi fi-rs-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="details.html" class="product__images">
-                  <img src="assets/img/4.jpg" alt="" class="product__img default" />
-
-                  <img src="assets/img/4.jpg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rs-eye"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                    <i class="fi fi-rs-heart"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rs-shuffle"></i>
-                  </a>
-                </div>
-
-                <div class="product__badge light-green">-22%</div>
-              </div>
-
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="details.html">
-                  <h3 class="product__title">Buy 2 Get 1</h3>
-                </a>
-                <div class="product__rating">
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                </div>
-
-                <div class="product__price flex">
-                  <span class="new__price">Rp250.000</span>
-                  <span class="old__price">Rp150.000</span>
-                </div>
-
-                <a href="#" class="action__btn cart__btn" aria-label="Add to Cart">
-                  <i class="fi fi-rs-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="details.html" class="product__images">
-                  <img src="assets/img/3.jpg" alt="" class="product__img default" />
-
-                  <img src="assets/img/3.jpg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rs-eye"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                    <i class="fi fi-rs-heart"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rs-shuffle"></i>
-                  </a>
-                </div>
-
-              </div>
-
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="details.html">
-                  <h3 class="product__title">Buy 2 Get 1</h3>
-                </a>
-                <div class="product__rating">
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                </div>
-
-                <div class="product__price flex">
-                  <span class="new__price">Rp245.000</span>
-                  <span class="old__price">Rp145.000</span>
-                </div>
-
-                <a href="#" class="action__btn cart__btn" aria-label="Add to Cart">
-                  <i class="fi fi-rs-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="tab__item" content id="new-added">
-          <div class="products__container grid">
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="details.html" class="product__images">
-                  <img src="assets/img/1.jpg" alt="" class="product__img default" />
-
-                  <img src="assets/img/1.jpg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rs-eye"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                    <i class="fi fi-rs-heart"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rs-shuffle"></i>
-                  </a>
-                </div>
-
-                <div class="product__badge light-pink">Hot</div>
-              </div>
-
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="details.html">
-                  <h3 class="product__title">Colorful Pattern Shirt</h3>
-                </a>
-                <div class="product__rating">
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                </div>
-
-                <div class="product__price flex">
-                  <span class="new__price">Rp238.000</span>
-                  <span class="old__price">Rp138.000</span>
-                </div>
-
-                <a href="#" class="action__btn cart__btn" aria-label="Add to Cart">
-                  <i class="fi fi-rs-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="details.html" class="product__images">
-                  <img src="assets/img/2.jpg" alt="" class="product__img default" />
-
-                  <img src="assets/img/2.jpg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rs-eye"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                    <i class="fi fi-rs-heart"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rs-shuffle"></i>
-                  </a>
-                </div>
-
-                <div class="product__badge light-green">Hot</div>
-              </div>
-
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="details.html">
-                  <h3 class="product__title">Colorful Pattern Shirt</h3>
-                </a>
-                <div class="product__rating">
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                </div>
-
-                <div class="product__price flex">
-                  <span class="new__price">Rp238.000</span>
-                  <span class="old__price">Rp138.000</span>
-                </div>
-
-                <a href="#" class="action__btn cart__btn" aria-label="Add to Cart">
-                  <i class="fi fi-rs-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="details.html" class="product__images">
-                  <img src="assets/img/3.jpg" alt="" class="product__img default" />
-
-                  <img src="assets/img/3.jpg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rs-eye"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                    <i class="fi fi-rs-heart"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rs-shuffle"></i>
-                  </a>
-                </div>
-
-                <div class="product__badge light-orange">Hot</div>
-              </div>
-
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="details.html">
-                  <h3 class="product__title">Colorful Pattern Shirt</h3>
-                </a>
-                <div class="product__rating">
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                </div>
-
-                <div class="product__price flex">
-                  <span class="new__price">Rp238.000</span>
-                  <span class="old__price">Rp138.000</span>
-                </div>
-
-                <a href="#" class="action__btn cart__btn" aria-label="Add to Cart">
-                  <i class="fi fi-rs-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="details.html" class="product__images">
-                  <img src="assets/img/4.jpg" alt="" class="product__img default" />
-
-                  <img src="assets/img/4.jpg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rs-eye"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                    <i class="fi fi-rs-heart"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rs-shuffle"></i>
-                  </a>
-                </div>
-
-                <div class="product__badge light-blue">Hot</div>
-              </div>
-
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="details.html">
-                  <h3 class="product__title">Colorful Pattern Shirt</h3>
-                </a>
-                <div class="product__rating">
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                </div>
-
-                <div class="product__price flex">
-                  <span class="new__price">Rp238.000</span>
-                  <span class="old__price">Rp138.000</span>
-                </div>
-
-                <a href="#" class="action__btn cart__btn" aria-label="Add to Cart">
-                  <i class="fi fi-rs-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="details.html" class="product__images">
-                  <img src="assets/img/5.jpg" alt="" class="product__img default" />
-
-                  <img src="assets/img/5.jpg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rs-eye"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                    <i class="fi fi-rs-heart"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rs-shuffle"></i>
-                  </a>
-                </div>
-
-                <div class="product__badge light-green">-30%</div>
-              </div>
-
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="details.html">
-                  <h3 class="product__title">Colorful Pattern Shirt</h3>
-                </a>
-                <div class="product__rating">
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                </div>
-
-                <div class="product__price flex">
-                  <span class="new__price">Rp238.000</span>
-                  <span class="old__price">Rp138.000</span>
-                </div>
-
-                <a href="#" class="action__btn cart__btn" aria-label="Add to Cart">
-                  <i class="fi fi-rs-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="details.html" class="product__images">
-                  <img src="assets/img/6.jpg" alt="" class="product__img default" />
-
-                  <img src="assets/img/6.jpg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rs-eye"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                    <i class="fi fi-rs-heart"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rs-shuffle"></i>
-                  </a>
-                </div>
-
-                <div class="product__badge light-green">-22%</div>
-              </div>
-
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="details.html">
-                  <h3 class="product__title">Colorful Pattern Shirt</h3>
-                </a>
-                <div class="product__rating">
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                </div>
-
-                <div class="product__price flex">
-                  <span class="new__price">Rp238.000</span>
-                  <span class="old__price">Rp138.000</span>
-                </div>
-
-                <a href="#" class="action__btn cart__btn" aria-label="Add to Cart">
-                  <i class="fi fi-rs-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="details.html" class="product__images">
-                  <img src="assets/img/7.jpg" alt="" class="product__img default" />
-
-                  <img src="assets/img/7.jpg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rs-eye"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                    <i class="fi fi-rs-heart"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rs-shuffle"></i>
-                  </a>
-                </div>
-
-                <div class="product__badge light-green">-22%</div>
-              </div>
-
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="details.html">
-                  <h3 class="product__title">Colorful Pattern Shirt</h3>
-                </a>
-                <div class="product__rating">
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                </div>
-
-                <div class="product__price flex">
-                  <span class="new__price">Rp238.000</span>
-                  <span class="old__price">Rp138.000</span>
-                </div>
-
-                <a href="#" class="action__btn cart__btn" aria-label="Add to Cart">
-                  <i class="fi fi-rs-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="product__item">
-              <div class="product__banner">
-                <a href="details.html" class="product__images">
-                  <img src="assets/img/8.jpg" alt="" class="product__img default" />
-
-                  <img src="assets/img/8.jpg" alt="" class="product__img hover" />
-                </a>
-
-                <div class="product__actions">
-                  <a href="#" class="action__btn" aria-label="Quick View">
-                    <i class="fi fi-rs-eye"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Add to Wishlist">
-                    <i class="fi fi-rs-heart"></i>
-                  </a>
-
-                  <a href="#" class="action__btn" aria-label="Compare">
-                    <i class="fi fi-rs-shuffle"></i>
-                  </a>
-                </div>
-
-              </div>
-
-              <div class="product__content">
-                <span class="product__category">Clothing</span>
-                <a href="details.html">
-                  <h3 class="product__title">Colorful Pattern Shirt</h3>
-                </a>
-                <div class="product__rating">
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                  <i class='fi fi-rs-star'></i>
-                </div>
-
-                <div class="product__price flex">
-                  <span class="new__price">Rp238.000</span>
-                  <span class="old__price">Rp138.000</span>
-                </div>
-
-                <a href="#" class="action__btn cart__btn" aria-label="Add to Cart">
-                  <i class="fi fi-rs-shopping-bag-add"></i>
-                </a>
-              </div>
-            </div>
+            <?php
+            // Loop through products and display them
+            if (isset($products)) {
+              foreach ($products as $product) {
+            ?>
+                <div class="product__item">
+                  <div class="product__banner">
+                    <a href="details.php?id=<?php echo $product['id_produk']; ?>" class="product__images">
+                      <img src="../assets/foto_produk/<?php echo $product['foto']; ?>" alt="<?php echo $product['nama_produk']; ?>" class="product__img default" />
+                      <img src="../assets/foto_produk/<?php echo $product['foto']; ?>" alt="<?php echo $product['nama_produk']; ?>" class="product__img hover" />
+                    </a>
+
+                    <div class="product__actions">
+                      <a href="#" class="action__btn" aria-label="Quick View">
+                        <i class="fi fi-rs-eye"></i>
+                      </a>
+                      <a href="#" class="action__btn" aria-label="Add to Wishlist">
+                        <i class="fi fi-rs-heart"></i>
+                      </a>
+                      <a href="#" class="action__btn" aria-label="Compare">
+                        <i class="fi fi-rs-shuffle"></i>
+                      </a>
+                    </div>
+
+                    <div class="product__badge light-pink">Hot</div>
+                  </div>
+
+                  <div class="product__content">
+                    <span class="product__category"><?php echo $product['kategori']; ?></span>
+                    <a href="details.php?id=<?php echo $product['id_produk']; ?>">
+                      <h3 class="product__title"><?php echo $product['nama_produk']; ?></h3>
+                    </a>
+                    <div class="product__rating">
+                      <?php for ($i = 0; $i < 5; $i++) { ?>
+                        <i class='fi fi-rs-star'></i>
+                      <?php } ?>
+                    </div>
+
+                    <div class="product__price flex">
+                      <span class="new__price">Rp<?php echo number_format($product['harga'], 0, ',', '.'); ?></span>
+                      <span class="old__price">Rp<?php echo number_format($product['harga'], 0, ',', '.'); ?></span>
+                    </div>
+
+                    <a href="#" class="action__btn cart__btn" aria-label="Add to Cart">
+                      <i class="fi fi-rs-shopping-bag-add"></i>
+                    </a>
+                  </div>
+                </div>
+            <?php
+              }
+            } else {
+              echo "<p>No products found.</p>";
+            }
+            ?>
           </div>
         </div>
       </div>
     </section>
   </div>
-
+  </div>
 
   <!--============ NEWSLETTER  ==============-->
   <section class="newsletter section home__newsletter">

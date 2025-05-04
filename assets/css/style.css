@@ -969,51 +969,47 @@ a .category__img {
     width: 250px; /* tambahkan ini */
 }
 
-
-  .sidebar-menu-category-list label {
+.sidebar-menu-category-list label {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.8rem; /* Menambah jarak antara checkbox dan teks */
     cursor: pointer;
-    font-size: var(--small-font-size);
-    color: var(--text-color);
-  }
-
-  .products__container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 1.5rem;
-  }
-  
-  .sidebar-title {
-    font-weight: 700;
-    font-size: var(--normal-font-size);
-    margin-bottom: 1rem;
-    color: var(--title-color);
-  }
-  
-  .menu-title-flex {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .sidebar-menu-category-list label {
     font-size: var(--small-font-size);
     color: #e91e63; /* Warna pink */
-    cursor: pointer;
     transition: color 0.3s ease;
   }
   
+  /* Warna label saat di hover */
   .sidebar-menu-category-list label:hover {
     color: #d81b60; 
   }
   
-  input[type="checkbox"] {
-    accent-color: #e91e63; 
+  /* Menambahkan efek pada checkbox yang aktif */
+  input[type="checkbox"]:checked {
+    accent-color: #e91e63; /* Warna pink saat checkbox dicentang */
   }
-
+  
+  /* Mengubah warna checkbox label ketika kategori aktif */
+  .sidebar-menu-category-list label.active {
+    font-weight: bold;
+    color: #ff7f50; /* Warna untuk kategori aktif */
+  }
+  
+  /* Styling untuk checkbox */
+  input[type="checkbox"] {
+    accent-color: #e91e63; /* Mengubah warna checkbox */
+  }
+  
+  /* Sembunyikan checkbox jika kategori belum dipilih */
+.sidebar-menu-category input[type="checkbox"] {
+    display: none; /* Menyembunyikan checkbox */
+  }
+  
+  /* Menampilkan checkbox jika kategori dipilih */
+  .sidebar-menu-category a.active input[type="checkbox"] {
+    display: inline-block; /* Menampilkan checkbox ketika kategori dipilih */
+  }
+  
   .sidebar-bestsellers {
   margin-top: 2rem;
   padding: 1.5rem;
@@ -1100,88 +1096,72 @@ a .category__img {
     margin: 0 5px;
 }
 
-.product-featured .showcase-rating {
-    color: var(--sandy-brown);
+.product-detail {
     display: flex;
-    align-items: center;
-    font-size: 16px;
-    margin-bottom: 15px;
+    justify-content: space-between;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
 }
 
-.product-featured .showcase-title {
-    font-size: var(--fs-7);
-    color: var(--eerie-black);
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-transform: uppercase;
-    margin-bottom: 3px;
+.product-images {
+    flex: 1;
+    padding-right: 20px;
 }
 
-.showcase-title:first-child {
-    font-size: 36px;
+.product-images img.main-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
 }
 
-.product-featured .showcase-desc {
-    color: var(--sonic-silver);
-    font-size: var(--fs-7);
-    font-weight: var(--weight-300);
+.product-info {
+    flex: 1;
+}
+
+.product-info h2 {
+    font-size: 24px;
+    font-weight: bold;
     margin-bottom: 10px;
 }
 
-.product-featured .price-box {
-    font-size: var(--fs-3);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
+.product-info p {
+    margin: 10px 0;
+    font-size: 18px;
 }
 
-.product-featured .price {
-    color: var(--salmon-pink);
-    font-weight: var(--weight-700);
+.add-to-cart {
+    background-color: #f15b56;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-.product-featured del {
-    color: var(--sonic-silver);
-    font-weight: var(--weight-300);
-}
-
-.product-featured .add-cart-btn {
-    background: var(--salmon-pink);
-    padding: 8px 15px;
-    color: var(--white);
-    font-weight: var(--fs-9);
-    font-weight: var(--weight-700);
-    text-transform: uppercase;
-    border-radius: var(--border-radius-md);
-    margin-bottom: 15px;
-    transition: var(--transition-timing);
-}
-
-.product-featured .add-cart-btn:hover {
-    background: var(--eerie-black);
-    color: var(--white);
+.add-to-cart:hover {
+    background-color: #ff2e2e;
 }
 
 .product-description {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    margin-top: 20px;
 }
 
 .product-description h3 {
+    font-size: 22px;
     margin-bottom: 10px;
 }
 
 .product-description ul {
-    list-style: disc;
-    padding: 0;
+    list-style-type: none;
+    padding-left: 0;
 }
 
-.product-description li {
-    margin-bottom: 10px;
+.product-description ul li {
+    font-size: 16px;
+    margin-bottom: 5px;
 }
 
 

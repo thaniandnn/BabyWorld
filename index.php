@@ -107,13 +107,13 @@ if (isset($_POST['login'])) {
 
                 </ul>
 
-                <div class="header__search">
-                    <input type="text" placeholder="Search for items..." class="form__input">
-
-                    <button class="search__btn">
+                <form action="shop.php" method="GET" class="header__search">
+                    <input type="text" name="search" placeholder="Search for items..." class="form__input">
+                    <button type="submit" class="search__btn">
                         <i class='bx bx-search-alt'></i>
                     </button>
-                </div>
+                </form>
+
             </div>
 
             <div class="header__user-actions">
