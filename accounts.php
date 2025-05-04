@@ -1,12 +1,32 @@
 <?php
 session_start();
+include "configdb.php";
 
-// Cek apakah sudah login dan role-nya admin
+// Pastikan user sudah login dan memiliki role 'user'
 if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'user') {
-    header("Location: ../login-register.php");
+    header("Location: login-register.php");
     exit();
 }
+
+// Ambil email user yang sudah login
+$email = $_SESSION['email'];
+
+// Ambil data user berdasarkan email
+$userQuery = $conn->query("SELECT * FROM tb_user WHERE email='$email'");
+$user = $userQuery->fetch_assoc();
+$user_id = $user['id'];  // Pastikan kolom ini ada di tb_user
+
+// Ambil data alamat user
+$current_address = $user['address'];
+
+// Pastikan session 'name' sudah ada, jika ada maka tampilkan nama
+if (isset($_SESSION['name'])) {
+    $username = $_SESSION['name'];  // Mengambil nama user dari session
+} else {
+    $username = 'Guest';  // Default jika user belum login
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,8 +47,6 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'user') {
 </head>
 
 <body>
-
-
     <!--============ HEADER ==============-->
     <header class="header">
         <div class="header__top">
@@ -52,27 +70,6 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'user') {
                 </div>
             </div>
         </div>
-
-        <!--============ PHP ==============-->
-        <?php
-        // Pesan feedback dari URL
-        $success = $_GET['success'] ?? '';
-        $error = $_GET['error'] ?? '';
-        ?>
-
-        <?php if ($success): ?>
-            <div style="background-color: #d4edda; color: #155724; padding: 1rem; text-align: center; margin: 1rem auto; width: 90%; max-width: 600px; border-radius: 5px;">
-                ✅ Update berhasil!
-            </div>
-        <?php elseif ($error === 'wrong_password'): ?>
-            <div style="background-color: #f8d7da; color: #721c24; padding: 1rem; text-align: center; margin: 1rem auto; width: 90%; max-width: 600px; border-radius: 5px;">
-                ❌ Password lama salah. Silakan coba lagi.
-            </div>
-        <?php elseif ($error === 'confirm_mismatch'): ?>
-            <div style="background-color: #f8d7da; color: #721c24; padding: 1rem; text-align: center; margin: 1rem auto; width: 90%; max-width: 600px; border-radius: 5px;">
-                ❌ Konfirmasi password baru tidak cocok.
-            </div>
-        <?php endif; ?>
 
         <nav class="nav container">
             <a href="index.php" class="nav__logo">
@@ -146,6 +143,7 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'user') {
         </ul>
     </section>
 
+
     <!--============ ACCOUNTS  ==============-->
     <section class="accounts section--lg">
         <div class="accounts__container container grid">
@@ -178,7 +176,7 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'user') {
 
             <div class="tabs__content">
                 <div class="tab__content active-tab" content id="dashboard">
-                    <h3 class="tab__header">Hello Dian!</h3>
+                    <h3 class="tab__header">Hello <?php echo htmlspecialchars($username); ?>!</h3>
 
                     <div class="tab__body">
                         <p class="tab__description">
@@ -250,36 +248,58 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'user') {
                     <div class="tab__body">
                         <form action="update_account.php" method="POST" class="form grid">
                             <input type="hidden" name="action" value="update_address">
-
-                            <textarea name="address" class="form__input" rows="4" placeholder="Enter your shipping address">Jl. Telekomunikasi, No 73. Bandung, Jawa Barat, 453661, Indonesia</textarea>
+                            <textarea name="address" class="form__input" rows="4" placeholder="Enter your shipping address"><?php echo htmlspecialchars($current_address); ?></textarea>
 
                             <div class="form__btn">
                                 <button type="submit">Save</button>
                             </div>
                         </form>
-
                     </div>
                 </div>
 
                 <div class="tab__content" content id="change-password">
-                    <h3 class="tab__header">Change Password</h3>
+                <h3 class="tab__header">Change Password</h3>
 
-                    <div class="tab__body">
-                        <form action="update_account.php" method="POST" class="form grid">
-                            <input type="hidden" name="action" value="change_password">
+                <div class="tab__body">
+                    <form action="update_account.php" method="POST" class="form grid">
+                        <input type="hidden" name="action" value="change_password">
 
-                            <input type="password" name="current_password" placeholder="Current Password" class="form__input" required>
-                            <input type="password" name="new_password" placeholder="New Password" class="form__input" required>
-                            <input type="password" name="confirm_password" placeholder="Confirm Password" class="form__input" required>
+                        <input type="password" name="current_password" placeholder="Current Password" class="form__input" required>
+                        <input type="password" name="new_password" placeholder="New Password" class="form__input" required>
+                        <input type="password" name="confirm_password" placeholder="Confirm Password" class="form__input" required>
 
-                            <div class="form__btn">
-                                <button type="submit">Save</button>
-                            </div>
-                        </form>
-                    </div>
+                        <div class="form__btn">
+                            <button type="submit">Save</button>
+                        </div>
+                    </form>
                 </div>
-
             </div>
+            </div>
+
+           
+
+            <!--============ PHP ==============-->
+            <?php
+            // Pesan feedback dari URL
+            $success = $_GET['success'] ?? '';
+            $error = $_GET['error'] ?? '';
+            ?>
+
+            <?php if ($success): ?>
+                <div style="background-color: #d4edda; color: #155724; padding: 1rem; text-align: center; margin: 1rem auto; width: 90%; max-width: 600px; border-radius: 5px;">
+                    ✅ Update berhasil!
+                </div>
+            <?php elseif ($error === 'wrong_password'): ?>
+                <div style="background-color: #f8d7da; color: #721c24; padding: 1rem; text-align: center; margin: 1rem auto; width: 90%; max-width: 600px; border-radius: 5px;">
+                    ❌ Password lama salah. Silakan coba lagi.
+                </div>
+            <?php elseif ($error === 'confirm_mismatch'): ?>
+                <div style="background-color: #f8d7da; color: #721c24; padding: 1rem; text-align: center; margin: 1rem auto; width: 90%; max-width: 600px; border-radius: 5px;">
+                    ❌ Konfirmasi password baru tidak cocok.
+                </div>
+            <?php endif; ?>
+
+        </div>
         </div>
     </section>
 

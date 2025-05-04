@@ -1002,7 +1002,7 @@ a .category__img {
   
   /* Sembunyikan checkbox jika kategori belum dipilih */
 .sidebar-menu-category input[type="checkbox"] {
-    display: none; /* Menyembunyikan checkbox */
+    display: inline-block !important; /* Menyembunyikan checkbox */
   }
   
   /* Menampilkan checkbox jika kategori dipilih */
